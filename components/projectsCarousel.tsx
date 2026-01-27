@@ -3,8 +3,8 @@ import dynamic from "next/dynamic";
 import { Suspense } from "react";
 
 
-const Desktop = dynamic(()=>import("./desktopProjectsCarousel"), {loading: ()=>null});
 const Mobile = dynamic(()=>import("./mobileProjectsCarousel"), {loading: ()=>null});
+const Desktop = dynamic(()=>import("./desktopProjectsCarousel"), {loading: ()=>null});
 
 
 export default function ProjectsCarousel() {

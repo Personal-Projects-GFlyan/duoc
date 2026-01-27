@@ -2,9 +2,7 @@
 
 import { use, useState, useEffect, useRef, RefObject } from "react";
 import CircleComponent from "@/components/circle";
-import dynamic from "next/dynamic";
-
-const Mobile = dynamic(() => import("@/components/mobileProjectCard"), { ssr: false });
+import MobileProjectCard from "./mobileProjectCard";"@/components/mobileProjectCard";
 
 type ProjectCard = {
   id: number,
@@ -16,7 +14,7 @@ type ProjectCard = {
 
 export default function Home({projectsData}: {projectsData: Promise<ProjectCard[]>}) {
 
-    const projects: ProjectCard[] = use(projectsData);
+   const projects: ProjectCard[] = use(projectsData);
 
    const ListCircle = [CircleComponent, 
                        CircleComponent, 
@@ -34,12 +32,12 @@ export default function Home({projectsData}: {projectsData: Promise<ProjectCard[
                     useRef<HTMLDivElement | null>(null)
     ];
     
-    const ListCard = [Mobile,
-                      Mobile,
-                      Mobile,
-                      Mobile,
-                      Mobile,
-                      Mobile
+    const ListCard = [MobileProjectCard,
+                      MobileProjectCard,
+                      MobileProjectCard,
+                      MobileProjectCard,
+                      MobileProjectCard,
+                      MobileProjectCard
     ];
 
    const [active, setActive] = useState(0);
@@ -47,7 +45,7 @@ export default function Home({projectsData}: {projectsData: Promise<ProjectCard[
   useEffect(() => {
 
     const setActiveCircle = (cardRef:RefObject<HTMLDivElement | null>, index:number) => {
-        if (!cardRef?.current ) return;
+        if (!cardRef?.current) return;
         const observer = new IntersectionObserver(
             ([entry]) => {
                 if (entry.isIntersecting) {
@@ -55,7 +53,7 @@ export default function Home({projectsData}: {projectsData: Promise<ProjectCard[
                 }
             },
             {
-                threshold: 0.80
+                threshold: 0.50
             }
         );
         observer.observe(cardRef.current);
