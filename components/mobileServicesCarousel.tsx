@@ -1,6 +1,6 @@
 "use client";
 
-import { MobileServiceCard } from "@/components/serviceCardHome";
+import { MobileServiceCard, MobileServiceCardNotNavigable } from "@/components/serviceCardHome";
 import { useEffect, useState, use } from "react";
 import CircleComponent from "@/components/circle";
 
@@ -68,17 +68,17 @@ export default function Carousel({services}: {services: Promise<Service[]>}) {
             &#8203;
           </button> 
           <div className={right? "relative left-[100px] z-20 transition duration-350 translate-x-[95px]" : left ? "relative left-[100px] z-0 transition duration-350 translate-x-[95px] blur-[1.25px] transform scale-[0.8]" : "relative left-[100px] z-10 blur-[1.25px] transform scale-[0.8]"}>
-            <MobileServiceCard service={allServices[latePos]} 
+            <MobileServiceCardNotNavigable service={allServices[latePos]} 
               />
           </div>
           <div className={right ? "relative z-10 transition duration-350 translate-x-[95.35px] blur-[1.25px] scale-[0.8]" : left ? "relative z-20 transition duration-350 -translate-x-[95.35px] blur-[1.5px] scale-[0.8]" : "relative z-20 flex"}>
             <MobileServiceCard service={allServices[mainPos]}/> 
           </div>
           <div className={right? "relative right-[100px] z-0 transition duration-350 -translate-x-[97.75px] blur-[1.25px] transform scale-[0.8]" : left ? "relative right-[100px] z-20 transition duration-350 -translate-x-[95px]" : "relative right-[100px] z-10 blur-[1.25px] transform scale-[0.8]"}>
-            <MobileServiceCard service={allServices[nextPos]}/>
+            <MobileServiceCardNotNavigable service={allServices[nextPos]}/>
           </div>
           <div className={right?"absolute z-0 transition -translate-x-[95px] blur-[1.25px] transform scale-[0.8]": left?"absolute z-0 transition translate-x-[95px] blur-[1.25px] transform scale-[0.8]": "hidden"}>
-            <MobileServiceCard service={allServices[hiddenPos]}/>
+            <MobileServiceCardNotNavigable service={allServices[hiddenPos]}/>
           </div>
           <button onClick={() => handleChangeNext()} className={(left|| right)?"hidden" : "absolute right-[118px] z-40 h-[222px] w-[78px] cursor-pointer"}>
             &#8203;
