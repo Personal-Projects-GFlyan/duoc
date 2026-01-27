@@ -1,103 +1,69 @@
 "use client";
 
 import CircleComponent from "@/components/circle";
-import { DesktopProjectCard } from "./projectCard";
-import { useState } from "react";
+import { use, useState } from "react";
+import DesktopProjectCard from "./desktopProjectCardToCarousel";
 
-export default function Carousel() {
+type ProjectCard = {
+  id: number,
+  nome: string,
+  localizacao: string,
+  urlimagem: string,
+  altimagem: string;
+}
 
-const ListCircles = [CircleComponent, CircleComponent];
-    
-const ListComponents = [
-  {
-    title:"Lorem Ipsum 1", 
-    category: ["LOREM 1",],
-    localization:"Sobradinho, Brasília - DF",
-    imageSrc: "/slane.webp",
-    imageAlt: "Slane Image"
-  },
-    {
-    title:"Lorem Ipsum 2", 
-    category: ["LOREM 2",],
-    localization:"Sobradinho, Brasília - DF",
-    imageSrc: "/sla1ne.webp",
-    imageAlt: "Slane Image"
-  },
-    {
-    title:"Lorem Ipsum 3", 
-    category: ["LOREM 3",],
-    localization:"Sobradinho, Brasília - DF",
-    imageSrc: "/sla2ne.webp",
-    imageAlt: "Slane Image"
-  },
-    {
-    title:"Lorem Ipsum 4", 
-    category: ["LOREM 4",],
-    localization:"Sobradinho, Brasília - DF",
-    imageSrc: "/sla3ne.webp",
-    imageAlt: "Slane Image"
-  },
-    {
-    title:"Lorem Ipsum 5", 
-    category: ["LOREM 5",],
-    localization:"Sobradinho, Brasília - DF",
-    imageSrc: "/sla4ne.webp",
-    imageAlt: "Slane Image"
-  },
-    {
-    title:"Lorem Ipsum 6", 
-    category: ["LOREM 6",],
-    localization:"Sobradinho, Brasília - DF",
-    imageSrc: "/sla5ne.webp",
-    imageAlt: "Slane Image"
-  }]
+export default function Carousel({projectsData}: {projectsData: Promise<ProjectCard[]>}) {
 
-  function mod(n:number , m: number) {
-    return ((n % m) + m) % m;
-  }
+    const ListCircles = [CircleComponent, CircleComponent];
 
-  const [leftHiddenPos, setLeftHiddenPos] = useState(mod(ListComponents.length-1, ListComponents.length));
-  const [firstPos, setFirstPos] = useState(0);
-  const [secondPos, setSecondPos] = useState(mod(firstPos+1, ListComponents.length));
-  const [thirdPos, setThirdPos] = useState(mod(firstPos+2, ListComponents.length));
-  const [righttHiddenPos, setRightHiddenPos] = useState(mod(firstPos+3, ListComponents.length));
-  const [right, setRight] = useState(false);
-  const [left, setLeft] = useState(false);
-  const [active, setActive] = useState(false);
+    const projects: ProjectCard[] = use(projectsData);
 
-  function handleChangePrevious() {
-    setActive(true);
-    setLeftHiddenPos(mod(leftHiddenPos-3, ListComponents.length));
-    setFirstPos(mod(firstPos-3,ListComponents.length));
-    setSecondPos(mod(secondPos-4,ListComponents.length));
-    setThirdPos(mod(thirdPos-4,ListComponents.length));
-    setRightHiddenPos(mod(righttHiddenPos-4,ListComponents.length));
-    setLeft(true);
-    setTimeout(() =>{    
-        setLeft(false)
-        setSecondPos(mod(secondPos-3,ListComponents.length));
-        setThirdPos(mod(thirdPos-3,ListComponents.length));
-        setRightHiddenPos(mod(righttHiddenPos-3,ListComponents.length));
-        setActive(false);
-    }, 250);
-  }
+    function mod(n:number , m: number) {
+        return ((n % m) + m) % m;
+    }
 
-  function handleChangeNext() {
-    setActive(true);
-    setLeftHiddenPos(mod(leftHiddenPos+4, ListComponents.length));
-    setFirstPos(mod(firstPos+4,ListComponents.length));
-    setSecondPos(mod(secondPos+4,ListComponents.length));
-    setThirdPos(mod(thirdPos+3,ListComponents.length));
-    setRightHiddenPos(mod(righttHiddenPos+3,ListComponents.length));
-    setRight(true);
-    setTimeout(() =>{  
-        setRight(false);
-        setLeftHiddenPos(mod(leftHiddenPos+3, ListComponents.length));
-        setFirstPos(mod(firstPos+3,ListComponents.length));
-        setSecondPos(mod(secondPos+3,ListComponents.length));
-        setActive(false);
-    }, 250); 
-  }
+    const [leftHiddenPos, setLeftHiddenPos] = useState(mod(projects.length-1, projects.length));
+    const [firstPos, setFirstPos] = useState(0);
+    const [secondPos, setSecondPos] = useState(mod(firstPos+1, projects.length));
+    const [thirdPos, setThirdPos] = useState(mod(firstPos+2, projects.length));
+    const [righttHiddenPos, setRightHiddenPos] = useState(mod(firstPos+3, projects.length));
+    const [right, setRight] = useState(false);
+    const [left, setLeft] = useState(false);
+    const [active, setActive] = useState(false);
+
+    function handleChangePrevious() {
+        setActive(true);
+        setLeftHiddenPos(mod(leftHiddenPos-3, projects.length));
+        setFirstPos(mod(firstPos-3,projects.length));
+        setSecondPos(mod(secondPos-4,projects.length));
+        setThirdPos(mod(thirdPos-4,projects.length));
+        setRightHiddenPos(mod(righttHiddenPos-4,projects.length));
+        setLeft(true);
+        setTimeout(() =>{    
+            setLeft(false)
+            setSecondPos(mod(secondPos-3,projects.length));
+            setThirdPos(mod(thirdPos-3,projects.length));
+            setRightHiddenPos(mod(righttHiddenPos-3,projects.length));
+            setActive(false);
+        }, 250);
+    }
+
+    function handleChangeNext() {
+        setActive(true);
+        setLeftHiddenPos(mod(leftHiddenPos+4, projects.length));
+        setFirstPos(mod(firstPos+4,projects.length));
+        setSecondPos(mod(secondPos+4,projects.length));
+        setThirdPos(mod(thirdPos+3,projects.length));
+        setRightHiddenPos(mod(righttHiddenPos+3,projects.length));
+        setRight(true);
+        setTimeout(() =>{  
+            setRight(false);
+            setLeftHiddenPos(mod(leftHiddenPos+3, projects.length));
+            setFirstPos(mod(firstPos+3,projects.length));
+            setSecondPos(mod(secondPos+3,projects.length));
+            setActive(false);
+        }, 250); 
+    }
 
     return(
         <div className="relative min-h-[250px] w-full flex flex-col justify-center items-center">
@@ -111,48 +77,48 @@ const ListComponents = [
                 <div className="relative flex gap-10 justify-center items-center max-w-[980px] min-w-[980px]">
                     <div className={right?"absolute transition duration-250 left-0 z-10":left? "hidden":"hidden"}>
                         <DesktopProjectCard 
-                            title={ListComponents[leftHiddenPos].title} 
-                            category={ListComponents[leftHiddenPos].category}
-                            localization={ListComponents[leftHiddenPos].localization}
-                            imageSrc={ListComponents[leftHiddenPos].imageSrc}
-                            imageAlt={ListComponents[leftHiddenPos].imageAlt}
+                            title={projects[leftHiddenPos].nome} 
+                            // category={ListComponents[leftHiddenPos].category}
+                            localization={projects[leftHiddenPos].localizacao}
+                            imageSrc={projects[leftHiddenPos].urlimagem}
+                            imageAlt={projects[leftHiddenPos].altimagem}
                         />
                     </div>
 
                     <div className={right?"absolute left-0 min-w-[300px] transition durantion-250 translate-x-[340px] z-20": left? "hidden": "min-w-[300px]"}>
                         <DesktopProjectCard 
-                            title={ListComponents[firstPos].title} 
-                            category={ListComponents[firstPos].category}
-                            localization={ListComponents[firstPos].localization}
-                            imageSrc={ListComponents[firstPos].imageSrc}
-                            imageAlt={ListComponents[firstPos].imageAlt}
+                            title={projects[firstPos].nome} 
+                            // category={ListComponents[firstPos].category}
+                            localization={projects[firstPos].localizacao}
+                            imageSrc={projects[firstPos].urlimagem}
+                            imageAlt={projects[firstPos].altimagem}
                         />
                     </div>
                     <div className={right?"absolute left-0 translate-x-[680px] min-w-[300px] transition durantion-250 z-30":left?"absolute right-0 -translate-x-[680px] transition durantion-250 z-30":"min-w-[300px]"}>
                         <DesktopProjectCard 
-                            title={ListComponents[secondPos].title} 
-                            category={ListComponents[secondPos].category}
-                            localization={ListComponents[secondPos].localization}
-                            imageSrc={ListComponents[secondPos].imageSrc}
-                            imageAlt={ListComponents[secondPos].imageAlt}
+                            title={projects[secondPos].nome} 
+                            // category={ListComponents[secondPos].category}
+                            localization={projects[secondPos].localizacao}
+                            imageSrc={projects[secondPos].urlimagem}
+                            imageAlt={projects[secondPos].altimagem}
                         />
                     </div>
                     <div className={right?"hidden":left?"absolute right-0 min-w-[300px] transition durantion-250 -translate-x-[340px] z-20":"min-w-[300px]"}>
                         <DesktopProjectCard 
-                            title={ListComponents[thirdPos].title} 
-                            category={ListComponents[thirdPos].category}
-                            localization={ListComponents[thirdPos].localization}
-                            imageSrc={ListComponents[thirdPos].imageSrc}
-                            imageAlt={ListComponents[thirdPos].imageAlt}
+                            title={projects[thirdPos].nome} 
+                            // category={ListComponents[thirdPos].category}
+                            localization={projects[thirdPos].localizacao}
+                            imageSrc={projects[thirdPos].urlimagem}
+                            imageAlt={projects[thirdPos].altimagem}
                         />
                     </div>   
                     <div className={right?"hidden":left?"absolute transition duration-250 right-0 z-10":"hidden"}>
                         <DesktopProjectCard 
-                            title={ListComponents[righttHiddenPos].title} 
-                            category={ListComponents[righttHiddenPos].category}
-                            localization={ListComponents[righttHiddenPos].localization}
-                            imageSrc={ListComponents[righttHiddenPos].imageSrc}
-                            imageAlt={ListComponents[righttHiddenPos].imageAlt}
+                            title={projects[righttHiddenPos].nome} 
+                            // category={ListComponents[righttHiddenPos].category}
+                            localization={projects[righttHiddenPos].localizacao}
+                            imageSrc={projects[righttHiddenPos].urlimagem}
+                            imageAlt={projects[righttHiddenPos].altimagem}
                         />
                     </div> 
                 </div>

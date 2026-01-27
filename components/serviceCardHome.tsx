@@ -38,32 +38,6 @@ export function PrimaryServiceCard({service}: CardProps) {
     );
 }
 
-export function SecondaryServiceCard({service}: CardProps) {
-    return (
-        <article style={{ height: `${220}px`, width: `${150}px` }} className="relative bg-[#0B0E10] text-black rounded-xl border border-[#424242] overflow-hidden">
-            <div className="relative w-[150px] h-[90px]">
-                <Image src={service.urlimagem} alt={`${service.nome} Imagem`} fill className="object-cover"/>
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent z-20" />
-                <h1 className="absolute bottom-0 text-white font-bold ml-2 text-[11px] z-30">{service.nome}</h1>
-            </div>
-            <section className="px-2 pt-3">
-                <p className="text-[7.5px] text-gray-400 line-clamp-3">{service.descricao}</p>
-                <ul className="text-[7.5px] text-gray-400 list-disc ml-[18px] mt-1.5 font-bold marker:text-amber-400 ">
-                    {service.escopo.map((item, index)=>(
-                        <li key={index}><span className="line-clamp-1">{item}</span></li>
-                    ))}
-                </ul>
-
-                <Link href={`/service/${service.id}`} className="text-[7.5px] text-amber-400 flex ml-1 gap-1 absolute bottom-2">
-                    Saiba Mais
-                    <img src="/arrow.svg" alt="Arrow Icon" width={9} height={1} loading="eager" decoding="async" fetchPriority="low" />
-                </Link>
-            </section>
-                
-        </article>  
-    );
-}
-
 
 
 export function ServiceCard({service}: CardProps) {

@@ -1,57 +1,22 @@
 "use client";
 
-import { MobileProjectCard } from "./projectCard";
-import { useState, useEffect, useRef, RefObject } from "react";
+import { use, useState, useEffect, useRef, RefObject } from "react";
 import CircleComponent from "@/components/circle";
+import dynamic from "next/dynamic";
 
+const Mobile = dynamic(() => import("@/components/mobileProjectCard"), { ssr: false });
 
-export default function Home() {
+type ProjectCard = {
+  id: number,
+  nome: string,
+  localizacao: string,
+  urlimagem: string,
+  altimagem: string;
+}
 
-       
-    const ListComponents = [
-        {
-            title:"Lorem Ipsum 1", 
-            category: ["LOREM 1",],
-            localization:"Sobradinho, Brasília - DF",
-            imageSrc: "/slane.webp",
-            imageAlt: "Slane Image"
-        },
-            {
-            title:"Lorem Ipsum 2", 
-            category: ["LOREM 2",],
-            localization:"Sobradinho, Brasília - DF",
-            imageSrc: "/sla1ne.webp",
-            imageAlt: "Slane Image"
-        },
-            {
-            title:"Lorem Ipsum 3", 
-            category: ["LOREM 3",],
-            localization:"Sobradinho, Brasília - DF",
-            imageSrc: "/sla2ne.webp",
-            imageAlt: "Slane Image"
-        },
-            {
-            title:"Lorem Ipsum 4", 
-            category: ["LOREM 4",],
-            localization:"Sobradinho, Brasília - DF",
-            imageSrc: "/sla3ne.webp",
-            imageAlt: "Slane Image"
-        },
-            {
-            title:"Lorem Ipsum 5", 
-            category: ["LOREM 5",],
-            localization:"Sobradinho, Brasília - DF",
-            imageSrc: "/sla4ne.webp",
-            imageAlt: "Slane Image"
-        },
-            {
-            title:"Lorem Ipsum 6", 
-            category: ["LOREM 6",],
-            localization:"Sobradinho, Brasília - DF",
-            imageSrc: "/sla5ne.webp",
-            imageAlt: "Slane Image"
-        }
-    ];
+export default function Home({projectsData}: {projectsData: Promise<ProjectCard[]>}) {
+
+    const projects: ProjectCard[] = use(projectsData);
 
    const ListCircle = [CircleComponent, 
                        CircleComponent, 
@@ -69,12 +34,12 @@ export default function Home() {
                     useRef<HTMLDivElement | null>(null)
     ];
     
-    const ListCard = [MobileProjectCard,
-                      MobileProjectCard,
-                      MobileProjectCard,
-                      MobileProjectCard,
-                      MobileProjectCard,
-                      MobileProjectCard
+    const ListCard = [Mobile,
+                      Mobile,
+                      Mobile,
+                      Mobile,
+                      Mobile,
+                      Mobile
     ];
 
    const [active, setActive] = useState(0);
@@ -109,11 +74,11 @@ export default function Home() {
                {ListCard.map((Card, index)=>(
                 <Card key={index}
                     ref={ListRef[index]}
-                    title={ListComponents[index].title} 
-                    category={ListComponents[index].category}
-                    localization={ListComponents[index].localization}
-                    imageSrc={ListComponents[index].imageSrc}
-                    imageAlt={ListComponents[index].imageAlt}
+                    title={projects[index].nome} 
+                    // category={ListComponents[index].category}
+                    localization={projects[index].localizacao}
+                    imageSrc={projects[index].urlimagem}
+                    imageAlt={projects[index].altimagem}
                 />
                ))}
             </div>

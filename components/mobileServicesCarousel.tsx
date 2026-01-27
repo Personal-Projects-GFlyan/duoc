@@ -1,6 +1,6 @@
 "use client";
 
-import {PrimaryServiceCard, SecondaryServiceCard} from "@/components/serviceCardHome";
+import {PrimaryServiceCard} from "@/components/serviceCardHome";
 import { useEffect, useState, use } from "react";
 import CircleComponent from "@/components/circle";
 

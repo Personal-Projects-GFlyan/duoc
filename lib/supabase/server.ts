@@ -90,3 +90,64 @@ export async function getOtherServices_LimitedBy2(id: number): Promise<Service[]
     throw error;
   }
 }
+
+
+type ProjectCard = {
+  id: number,
+  nome: string,
+  localizacao: string,
+  urlimagem: string,
+  altimagem: string;
+}
+
+export async function getProjectsByServiceId_LimitedBy2(id: number): Promise<ProjectCard[]> {
+  try{
+    const supabase = await createClient();
+    const {data: projectIds, error} = await supabase.from("servico_projeto").select("idprojeto").eq("idservico", id).limit(2);
+    if(projectIds == null) return [];
+
+    const projects: ProjectCard[] = [];
+
+    for(const projectId of projectIds) {
+      const {data: project, error: firstError} = await supabase.from("projeto").select("id, nome, localizacao").eq("id", projectId.idprojeto).single();
+      if(project == null || firstError) continue;
+      const {data: projectImg, error: secondError} = await supabase.from("imagem_projeto").select("url, alt").match({"idprojeto": projectId.idprojeto, "pos": 1}).single();
+      if(projectImg == null || secondError) continue;
+      projects.push({
+        id: project.id,
+        nome: project.nome,
+        localizacao: project.localizacao,
+        urlimagem: projectImg.url,
+        altimagem: projectImg.alt
+      });
+    }
+
+    return projects;
+  } catch(error) {
+    throw error;
+  } 
+}
+
+export async function getProjectsInfos_LimitedBy6(): Promise<ProjectCard[]> {
+  try{
+    const supabase = await createClient();
+    const {data: projectsData, error} = await supabase.from("projeto").select("id, nome, localizacao").limit(6);
+    if(projectsData == null) return [];
+    const projects: ProjectCard[] = [];
+    for(const project of projectsData) { 
+      const {data: projectImg, error} = await supabase.from("imagem_projeto").select("url, alt").match({"idprojeto": project.id, "pos": 1}).single();
+      if(projectImg == null) return[];
+      projects.push({
+        id: project.id,
+        nome: project.nome,
+        localizacao: project.localizacao,
+        urlimagem: projectImg.url,
+        altimagem: projectImg.alt
+      });
+    }
+
+    return projects;
+  } catch(error) {
+    throw error;
+  } 
+}
