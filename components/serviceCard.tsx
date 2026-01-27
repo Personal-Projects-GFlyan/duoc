@@ -52,18 +52,20 @@ export async function ServiceCard({position, service}: CardProps) {
 }
 
 
-export async function OtherServiceCard({service}: {service: Service}) {
+export async function OtherServiceCard({odd, service}: {odd:boolean, service: Service}) {
     return(
         <article className="p-7 bg-[#1F1F1F] rounded-xl">
-                <div className="xl:flex justify-center gap-10 2xl:gap-32">
-                    <div className="xl:mt-3 relative w-full xl:w-[550px] h-[175px] xl:h-[387.5px] rounded-xl overflow-hidden">
-                        <Image
-                            src={service.urlimagem}
-                            alt={`${service.nome} Imagem`}
-                            fill
-                            className="object-cover rounded-xl"
-                        />
-                    </div>
+                <div className={odd?"xl:flex flex-row-reverse justify-center gap-10 2xl:gap-32":"xl:flex justify-center gap-10 2xl:gap-32"}>
+                    <Link href={`/project/${service.id}`} className="cursor-pointer transition hover:scale-[1.02]">
+                        <div className="xl:mt-3 relative w-full xl:w-[550px] h-[175px] xl:h-[387.5px] rounded-xl overflow-hidden">
+                            <Image
+                                src={service.urlimagem}
+                                alt={`${service.nome} Imagem`}
+                                fill
+                                className="object-cover rounded-xl"
+                            />
+                        </div>
+                    </Link>
                         <div className="xl:max-w-[631px]">        
                             <h1 className="text-[#D8D8D8] text-[17px] xl:text-[31px] font-bold mt-5 xl:mt-0 ">{service.nome}</h1>
                             <img src="/line.svg" alt="Line Icon" height={10} width={75} loading="eager" decoding="async" fetchPriority="low" className="lg:hidden mt-5"/>
@@ -74,7 +76,7 @@ export async function OtherServiceCard({service}: {service: Service}) {
                                     <li key={index}><span className="line-clamp-1 xl:line-clamp-2">{name}</span></li>
                                 ))}
                             </ul>
-                            <Link href={`/service/${service.id}`} className="flex gap-1 text-[#DAA520] text-[11px] xl:text-[20px] mt-2.5">
+                            <Link href={`/service/${service.id}`} className="flex gap-1 text-[#DAA520] text-[11px] xl:text-[20px] mt-2.5 cursor-pointer transition hover:scale-[1.05] xl:ml-5">
                                 Ver detalhes completo
                                 <img src="/arrow.svg" alt="Arrow Icon" width={13.5} height={10} loading="eager" decoding="async" fetchPriority="low" className="mt-[2.5px]"/>
                             </Link>

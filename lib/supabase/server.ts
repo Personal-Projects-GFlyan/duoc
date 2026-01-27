@@ -43,7 +43,7 @@ type Service = {
     escopo: string[];
 }
 
-export async function getServices_ScopeLimitedBy3(): Promise<Service[]> {
+export async function   getServices_ScopeLimitedBy3(): Promise<Service[]> {
   try {
     const supabase = await createClient();
     const {data, error} = await supabase.rpc("getservices_scopelimitedby3");

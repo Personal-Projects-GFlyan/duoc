@@ -14,10 +14,10 @@ export default function Home() {
         {title: "UKS Quadros Elétricos", urlSvg: "/UKS-Logo.svg", widthMobile: 70, heigthMobile: 20, widthDesktop: 75, heigthDesktop: 40},
     ]
     const contactLabels = [
-        {title: "Localização", subtitle: "Brasília, Distrito Federal", urlSvg: "/Pin.svg", widthMobile: 12.5, heigthMobile: 12.5, widthDesktop: 17.5, heigthDesktop: 17.5},
-        {title: "Telefone", subtitle: "(61) 99999-9999", urlSvg: "/Phone.svg", widthMobile: 15, heigthMobile: 15, widthDesktop: 20, heigthDesktop: 20},
-        {title: "WhatsApp", subtitle: "(61) 99999-9999", urlSvg: "/WhatsApp.svg", widthMobile: 15, heigthMobile: 15, widthDesktop: 20, heigthDesktop: 20},
-        {title: "E-mail", subtitle: "contato@duoc.com.br", urlSvg: "/Email.svg", widthMobile: 15, heigthMobile: 15, widthDesktop: 20, heigthDesktop: 20},
+        {title: "Localização", subtitle: "Assis Chateaubriand, 3º Andar, Salas 306, 308 e 310. Asa Sul, Brasília - DF", urlSvg: "/Pin.svg", url:"https://maps.app.goo.gl/5HpK5qe26eEuMwNt5", widthMobile: 12.5, heigthMobile: 12.5, widthDesktop: 22.5, heigthDesktop: 22.5},
+        {title: "Telefone", subtitle: "(61) 99525-5617", urlSvg: "/Phone.svg", url:"tel:+5561995255617", widthMobile: 15, heigthMobile: 15, widthDesktop: 25, heigthDesktop: 25},
+        {title: "WhatsApp", subtitle: "(61) 99525-5617", urlSvg: "/WhatsApp.svg", url:"https://wa.me/5561995255617", widthMobile: 15, heigthMobile: 15, widthDesktop: 25, heigthDesktop: 25},
+        {title: "E-mail", subtitle: "contato@duoc.com.br", urlSvg: "/Email.svg", url:"mailto:contato@duoc.com.br", widthMobile: 15, heigthMobile: 15, widthDesktop: 25, heigthDesktop: 25},
     ]
 
     return(
@@ -134,8 +134,8 @@ export default function Home() {
                 <section id="contact" className="bg-[#010101] w-full px-7 md:px-10 py-5 md:py-10">
                     <h1 className="text-[#DAA520] text-[17px] md:text-[22px] md:text-start font-medium ">FALE CONCOSCO</h1>
                     <div className="lg:flex justify-between">
-                        <div className="lg:max-w-[390px]">
-                            <h2 className="text-white font-bold mt-2 md:text-[30px]">
+                        <div className="lg:max-w-[501px]">
+                            <h2 className="text-white font-bold mt-2 lg:text-[39px]">
                                 Pronto para  <span className="text-[#DAA520]">Transformar</span> <br className="hidden md:block"/> seu Espaço
                             </h2>
                             <img src="/lastLine.svg" alt="Line Icon" height={5} width={205} loading="eager" decoding="async" fetchPriority="low" className="md:hidden"/>
@@ -143,20 +143,22 @@ export default function Home() {
                             <p className="text-[#D8D8D8] text-[12px] md:text-[16px] mt-2 md:text-justify">Entre em contato conosco para uma consulta personalizada. Nossa equipe está pronta para entender suas necessidades e apresentar as melhores soluções.</p>
                             <div className=" flex flex-wrap justify-center md:grid md:grid-cols-2 lg:flex lg:justify-start items-center lg:items-start lg:flex-col mt-5 gap-1 md:gap-5">
                                 {contactLabels.map((label, index)=>(
-                                    <article key={index} className="flex h-[50px] md:h-auto w-[150px] md:w-auto">
-                                        <div className="h-[30px] md:h-[50px] w-[30px] md:w-[50px] bg-[#DAA520] rounded-md flex justify-center items-center">
-                                            <img src={label.urlSvg} alt={`${label.title} Imagem`} width={label.widthMobile} height={label.heigthMobile}  loading="eager" decoding="async" fetchPriority="low" className="md:hidden"/>
-                                            <img src={label.urlSvg} alt={`${label.title} Imagem`} width={label.widthDesktop} height={label.heigthDesktop}  loading="eager" decoding="async" fetchPriority="low" className="hidden md:block"/>
-                                        </div>
-                                        <div className="text-white ml-2">
-                                            <h1 className="text-[10px] md:text-[16px] font-bold">{label.title}</h1>
-                                            <h2 className="text-[9px] md:text-[15px]">{label.subtitle}</h2>
-                                        </div>
-                                    </article>
+                                    <Link key={index} href={label.url}>
+                                        <article className="flex h-[50px] md:h-auto w-[150px] md:w-auto">
+                                            <div className="min-h-[35px] max-h-[35px] md:min-h-[67.5px] md:max-h-[67.5px] min-w-[35px] max-w-[35px] md:min-w-[67.5px] md:max-w-[67.5px] bg-[#DAA520] rounded-md flex justify-center items-center">
+                                                <img src={label.urlSvg} alt={`${label.title} Imagem`} width={label.widthMobile} height={label.heigthMobile}  loading="eager" decoding="async" fetchPriority="low" className="md:hidden"/>
+                                                <img src={label.urlSvg} alt={`${label.title} Imagem`} width={label.widthDesktop} height={label.heigthDesktop}  loading="eager" decoding="async" fetchPriority="low" className="hidden md:block"/>
+                                            </div>
+                                            <div className="text-white ml-2">
+                                                <h1 className="text-[10px] md:text-[16px] font-bold">{label.title}</h1>
+                                                <h2 className="text-[9px] md:text-[15px] line-clamp-1 lg:line-clamp-2">{label.subtitle}</h2>
+                                            </div>
+                                        </article>
+                                    </Link>
                                 ))}
                             </div>
                         </div>
-                        <form action="/" method="POST" className="px-7 pb-7 pt-3.5 md:py-5 border border-[#1F1F1F] bg-[#0E1011] flex flex-col gap-3 rounded-lg md:min-w-[500px] md:justify-center md:mt-7 lg:mt-0">
+                        <form action="/" method="POST" className="px-7 pb-7 pt-3.5 md:py-5 border border-[#1F1F1F] bg-[#0E1011] flex flex-col gap-3 rounded-lg md:min-w-[500px] md:justify-center mt-3 md:mt-7 lg:mt-0">
                             <div>
                                 <label htmlFor="name" className="text-[#D8D8D8] font-bold text-[9.5px] md:text-[14px]">Nome Completo</label>
                                 <input type="text" id="name" autoComplete="name" inputMode="text" placeholder="Seu nome" className="w-full border border-[#464646] bg-[#0E1011] rounded-md text-[#D8D8D8] mt-1.5 pl-2 text-[9.5px] md:text-[14px] h-[30px] md:h-[45px] focus:outline-none"/>

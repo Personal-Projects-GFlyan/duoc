@@ -1,6 +1,6 @@
 "use client";
 
-import { use, useState, useEffect, useRef, RefObject } from "react";
+import { use, useState, useEffect, useRef } from "react";
 import CircleComponent from "@/components/circle";
 import MobileProjectCard from "./mobileProjectCard";"@/components/mobileProjectCard";
 
@@ -15,74 +15,52 @@ type ProjectCard = {
 export default function Home({projectsData}: {projectsData: Promise<ProjectCard[]>}) {
 
    const projects: ProjectCard[] = use(projectsData);
-
-   const ListCircle = [CircleComponent, 
-                       CircleComponent, 
-                       CircleComponent,
-                       CircleComponent,
-                       CircleComponent,
-                       CircleComponent
-    ];
-
-   const ListRef = [useRef<HTMLDivElement | null>(null),
-                    useRef<HTMLDivElement | null>(null),
-                    useRef<HTMLDivElement | null>(null),
-                    useRef<HTMLDivElement | null>(null),
-                    useRef<HTMLDivElement | null>(null),
-                    useRef<HTMLDivElement | null>(null)
-    ];
-    
-    const ListCard = [MobileProjectCard,
-                      MobileProjectCard,
-                      MobileProjectCard,
-                      MobileProjectCard,
-                      MobileProjectCard,
-                      MobileProjectCard
-    ];
-
+   const ListRef = useRef<(HTMLDivElement | null)[]>([]);
+   const containerRef = useRef<HTMLDivElement | null>(null);
    const [active, setActive] = useState(0);
 
-  useEffect(() => {
-
-    const setActiveCircle = (cardRef:RefObject<HTMLDivElement | null>, index:number) => {
-        if (!cardRef?.current) return;
-        const observer = new IntersectionObserver(
-            ([entry]) => {
-                if (entry.isIntersecting) {
-                    setActive(index);
+    useEffect(() => {
+        const setActiveCircle = (cardRef: HTMLDivElement | null, index: number) => {
+            if (!cardRef) return;
+            const observer = new IntersectionObserver(
+                ([entry]) => {
+                    if (entry.isIntersecting) {
+                        setActive(index);
+                    }
+                },
+                {
+                    root: containerRef.current,
+                    threshold: 0.51
                 }
-            },
-            {
-                threshold: 0.50
-            }
-        );
-        observer.observe(cardRef.current);
-        return () => observer.disconnect();
-    }
+            );
+            observer.observe(cardRef);
+            return () => observer.disconnect();
+        }
 
-    ListRef.map((cardRef, index)=>(
-        setActiveCircle(cardRef, index)
-    ));
+        ListRef.current.map((cardRef, index)=>(
+            setActiveCircle(cardRef, index)
+        ));
 
-  }, []);
+    }, []);
 
     return( 
         <div className="w-full flex flex-col justify-center items-center gap-5 mt-5 ">
-            <div className="flex gap-1 max-w-[300px] overflow-auto scrollbar-hide snap-x snap-mandatory rounded-xl scroll-smooth">
-               {ListCard.map((Card, index)=>(
-                <Card key={index}
-                    ref={ListRef[index]}
-                    title={projects[index].nome} 
+            <div ref={containerRef} className="flex gap-1 max-w-[300px] overflow-auto scrollbar-hide snap-x snap-mandatory rounded-xl scroll-smooth">
+               {projects.map((project, index)=>(
+                <MobileProjectCard key={index}
+                    ref={(el) => {ListRef.current[index] = el}}
+                    id={project.id}
+                    title={project.nome} 
                     // category={ListComponents[index].category}
-                    localization={projects[index].localizacao}
-                    imageSrc={projects[index].urlimagem}
-                    imageAlt={projects[index].altimagem}
+                    localization={project.localizacao}
+                    imageSrc={project.urlimagem}
+                    imageAlt={project.altimagem}
                 />
                ))}
             </div>
             <div className="flex gap-2">
-                {ListCircle.map((Circle, index)=>(
-                    <Circle key={index} position={index} actualPosition={active}/>
+                {projects.map((project, index)=>(
+                    <CircleComponent key={index} position={index} actualPosition={active}/>
                 ))}
             </div>
         </div>

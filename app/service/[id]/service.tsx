@@ -10,8 +10,8 @@ type Service = {
     escopo: string[];
 }
 
-function isPair(x: number) {
-    return x % 2 === 0;
+function isOdd(x: number) {
+    return x % 2 !== 0;
 }
 
 export default async function ServiceInfos({params}: {params: Promise<{id: string}>}) {
@@ -77,6 +77,7 @@ export default async function ServiceInfos({params}: {params: Promise<{id: strin
                     {otherServices.map((service, index) => (
                         <OtherServiceCard
                         key={index} 
+                        odd={isOdd(index)}
                         service={service}/>))}        
                 </div>
             </section>

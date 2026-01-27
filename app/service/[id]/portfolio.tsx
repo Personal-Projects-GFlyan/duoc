@@ -2,6 +2,7 @@
 
 import { use } from "react";
 import dynamic from "next/dynamic";
+import Link from "next/link";
 
 const Mobile = dynamic(()=> import('@/components/mobileProjectCard'), {ssr: false});
 const Desktop = dynamic(()=> import('@/components/desktopProjectCard'));
@@ -27,13 +28,18 @@ export function Portfolio({serviceName, projectsData}: {serviceName: string, pro
                 <img src="/line.svg" alt="Line Icon" height={10} width={280} loading="eager" decoding="async" fetchPriority="low" className="hidden lg:block mt-2"/> 
                 <div className="lg:hidden flex flex-col gap-5 mt-5">
                     {projects.map((project, index) => (
-                        <Mobile key={index} title={project.nome} localization={project.localizacao} imageSrc={project.urlimagem} imageAlt={project.altimagem}/>
+                        <Mobile key={index} id={project.id} title={project.nome} localization={project.localizacao} imageSrc={project.urlimagem} imageAlt={project.altimagem}/>
                     ))}
                 </div>
                 <div className="hidden lg:flex mt-10 justify-center items-center w-full 2xl:max-w-[1444px] gap-5 xl:gap-14">
                     {projects.map((project, index) => (
-                        <Desktop key={index} title={project.nome} localization={project.localizacao} imageSrc={project.urlimagem} imageAlt={project.altimagem}/>
+                        <Desktop key={index} id={project.id} title={project.nome} localization={project.localizacao} imageSrc={project.urlimagem} imageAlt={project.altimagem}/>
                     ))}
+                </div>
+                <div className="flex justify-between mt-6 gap-5">
+                    <Link href="/projects" className="font-bold bg-[#DAA520] text-[14px] lg:text-[19px] py-1 px-5 lg:px-4 transition hover:scale-105 cursor-pointer mt-5">
+                        VER PORTIFÓLIO COMPLETO
+                    </Link>
                 </div>
             </section>
         );

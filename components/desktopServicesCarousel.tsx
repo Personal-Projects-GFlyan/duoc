@@ -1,7 +1,7 @@
 "use client";
 
 import CircleComponent from "@/components/circle";
-import { ServiceCard } from "@/components/serviceCardHome";
+import { DesktopServiceCard } from "@/components/serviceCardHome";
 import { useState, use } from "react";
 
 type Service = {
@@ -75,28 +75,28 @@ export default function Carousel({services}: {services: Promise<Service[]>}) {
                 </button>
                 <div className="relative flex gap-10 justify-center items-center max-w-[980px] min-w-[980px]">
                     <div className={right?"absolute transition duration-250 left-0 z-10":left? "hidden":"hidden"}>
-                        <ServiceCard 
+                        <DesktopServiceCard 
                             service={allServices[leftHiddenPos]} 
                         />
                     </div>
 
                     <div className={right?"absolute left-0 min-w-[300px] transition durantion-250 translate-x-[340px] z-20": left? "hidden": "min-w-[300px]"}>
-                        <ServiceCard 
+                        <DesktopServiceCard 
                             service={allServices[firstPos]} 
                         />
                     </div>
                     <div className={right?"absolute left-0 translate-x-[680px] min-w-[300px] transition durantion-250 z-30":left?"absolute right-0 -translate-x-[680px] transition durantion-250 z-30":"min-w-[300px]"}>
-                        <ServiceCard 
+                        <DesktopServiceCard 
                             service={allServices[secondPos]}
                         />
                     </div>
                     <div className={right?"hidden":left?"absolute right-0 min-w-[300px] transition durantion-250 -translate-x-[340px] z-20":"min-w-[300px]"}>
-                        <ServiceCard 
+                        <DesktopServiceCard 
                             service={allServices[thirdPos]}
                         />
                     </div>   
                     <div className={right?"hidden":left?"absolute transition duration-250 right-0 z-10":"hidden"}>
-                        <ServiceCard 
+                        <DesktopServiceCard 
                             service={allServices[righttHiddenPos]}
                         />
                     </div> 

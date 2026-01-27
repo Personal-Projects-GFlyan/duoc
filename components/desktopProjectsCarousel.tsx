@@ -77,6 +77,7 @@ export default function Carousel({projectsData}: {projectsData: Promise<ProjectC
                 <div className="relative flex gap-10 justify-center items-center max-w-[980px] min-w-[980px]">
                     <div className={right?"absolute transition duration-250 left-0 z-10":left? "hidden":"hidden"}>
                         <DesktopProjectCard 
+                            id={projects[leftHiddenPos].id}
                             title={projects[leftHiddenPos].nome} 
                             // category={ListComponents[leftHiddenPos].category}
                             localization={projects[leftHiddenPos].localizacao}
@@ -87,6 +88,7 @@ export default function Carousel({projectsData}: {projectsData: Promise<ProjectC
 
                     <div className={right?"absolute left-0 min-w-[300px] transition durantion-250 translate-x-[340px] z-20": left? "hidden": "min-w-[300px]"}>
                         <DesktopProjectCard 
+                            id={projects[firstPos].id}
                             title={projects[firstPos].nome} 
                             // category={ListComponents[firstPos].category}
                             localization={projects[firstPos].localizacao}
@@ -96,6 +98,7 @@ export default function Carousel({projectsData}: {projectsData: Promise<ProjectC
                     </div>
                     <div className={right?"absolute left-0 translate-x-[680px] min-w-[300px] transition durantion-250 z-30":left?"absolute right-0 -translate-x-[680px] transition durantion-250 z-30":"min-w-[300px]"}>
                         <DesktopProjectCard 
+                            id={projects[secondPos].id}
                             title={projects[secondPos].nome} 
                             // category={ListComponents[secondPos].category}
                             localization={projects[secondPos].localizacao}
@@ -105,6 +108,7 @@ export default function Carousel({projectsData}: {projectsData: Promise<ProjectC
                     </div>
                     <div className={right?"hidden":left?"absolute right-0 min-w-[300px] transition durantion-250 -translate-x-[340px] z-20":"min-w-[300px]"}>
                         <DesktopProjectCard 
+                            id={projects[thirdPos].id}
                             title={projects[thirdPos].nome} 
                             // category={ListComponents[thirdPos].category}
                             localization={projects[thirdPos].localizacao}
@@ -114,6 +118,7 @@ export default function Carousel({projectsData}: {projectsData: Promise<ProjectC
                     </div>   
                     <div className={right?"hidden":left?"absolute transition duration-250 right-0 z-10":"hidden"}>
                         <DesktopProjectCard 
+                            id={projects[righttHiddenPos].id}
                             title={projects[righttHiddenPos].nome} 
                             // category={ListComponents[righttHiddenPos].category}
                             localization={projects[righttHiddenPos].localizacao}

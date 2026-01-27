@@ -3,9 +3,9 @@ import Link from "next/link";
 
 export default function Footer() {
     const socialMedia = [
-        {name: "Facebook", url: "/facebook.svg", link: "https://www.facebook.com/duocengenharia", mobileWidth: 12, mobileHeight: 20, desktopWidth: 14.5, desktopHeight: 25},
+        {name: "LinkedIn", url: "/linkedin.svg", link: "https://www.linkedin.com/in/duocengenharia", mobileWidth: 18, mobileHeight: 18  , desktopWidth: 23, desktopHeight: 23},
         {name: "Instagram", url: "/instagram.svg", link: "https://www.instagram.com/duocengenharia/", mobileWidth: 20, mobileHeight: 20, desktopWidth: 25, desktopHeight: 25},
-        {name: "Pinterest", url: "/pinterest.svg", link: "https://www.pinterest.com/duocengenharia/", mobileWidth: 16, mobileHeight: 20, desktopWidth: 21, desktopHeight: 25},
+        {name: "WhatsApp", url: "/whatsapp-footer.svg", link: "https://wa.me/5561995255617", mobileWidth: 19, mobileHeight: 19, desktopWidth: 25, desktopHeight: 25},
     ]
     return(
         <footer className="flex flex-col lg:flex-row justify-between items-center bg-[#202020] py-5 px-7 lg:px-10">
