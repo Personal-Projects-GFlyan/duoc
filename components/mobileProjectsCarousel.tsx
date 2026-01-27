@@ -90,7 +90,7 @@ export default function Home() {
                 }
             },
             {
-                threshold: 0.55
+                threshold: 0.80
             }
         );
         observer.observe(cardRef.current);
@@ -103,10 +103,9 @@ export default function Home() {
 
   }, []);
 
-
     return( 
         <div className="w-full flex flex-col justify-center items-center gap-5 mt-5 ">
-            <div className="flex gap-1 max-w-[300px] overflow-auto scrollbar-hide snap-x snap-mandatory rounded-xl">
+            <div className="flex gap-1 max-w-[300px] overflow-auto scrollbar-hide snap-x snap-mandatory rounded-xl scroll-smooth">
                {ListCard.map((Card, index)=>(
                 <Card key={index}
                     ref={ListRef[index]}
