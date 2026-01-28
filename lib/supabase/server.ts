@@ -151,3 +151,22 @@ export async function getProjectsInfos_LimitedBy6(): Promise<ProjectCard[]> {
     throw error;
   } 
 }
+
+type ProjectInfo = {
+  nome: string,
+  descricao: string,
+  localizacao: string,
+  ano: number,
+  duracao: string,
+  info_imagem: {alt: string, pos: number, url: string}[];
+}
+
+export async function getProjectInfo(id: number): Promise<ProjectInfo> {
+  try{
+    const supabase = await createClient();
+    const {data, error} = await supabase.rpc("getprojectinfos", {projectid: id}).single();
+    return data as ProjectInfo;
+  } catch(error) {
+    throw error;
+  } 
+}
