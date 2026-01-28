@@ -71,7 +71,7 @@ export function MobileServiceCardNotNavigable({service}: CardProps) {
 
 export function DesktopServiceCard({service}: CardProps) {
     return (
-        <article style={{ height: `${420}px`, width: `${300}px` }} className=" bg-[#0B0E10] text-black rounded-xl border border-[#424242] overflow-hidden">
+        <article style={{ height: `${420}px`, width: `${300}px` }} className=" bg-[#0B0E10] text-black rounded-xl border border-[#424242] overflow-hidden transition hover:scale-105">
             <Link href={`/service/${service.id}`} className="cursor-pointer">
                 <div className="relative w-[300px] h-[200px]">
                     <Image src={service.urlimagem} alt={`${service.nome} Imagem`} fill className="object-cover"/>
