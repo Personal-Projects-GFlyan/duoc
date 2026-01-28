@@ -23,16 +23,18 @@ export async function ServiceCard({position, service}: CardProps) {
     return(
         <article className="mx-5">
                 <div className={isPair(position)?"xl:flex justify-center gap-10":"xl:flex xl:flex-row-reverse justify-center gap-10"}>
-                    <div className="xl:mt-3 relative w-full xl:w-[550px] h-[195px] xl:h-[387.5px] rounded-xl overflow-hidden">
-                        <Image
-                            src={service.urlimagem}
-                            alt={`${service.nome} Imagem`}
-                            fill
-                            className="object-cover rounded-xl"
-                        />
-                    </div>
+                    <Link href={`/service/${service.id}`} className="cursor-pointer transition hover:scale-[1.02]">
+                        <div className="xl:mt-3 relative w-full xl:w-[550px] h-[195px] xl:h-[387.5px] rounded-xl overflow-hidden">
+                            <Image
+                                src={service.urlimagem}
+                                alt={`${service.nome} Imagem`}
+                                fill
+                                className="object-cover rounded-xl"
+                            />
+                        </div>
+                    </Link>
                         <div className="xl:max-w-[631px]">        
-                            <h1 className="text-[#D8D8D8] text-[23px] xl:text-[31px] font-bold mt-5 xl:mt-0 ">{service.nome}</h1>
+                            <h1 className="text-[#D8D8D8] text-[21px] xl:text-[31px] font-bold mt-5 xl:mt-0 ">{service.nome}</h1>
                             <img src="/line.svg" alt="Line Icon" height={10} width={130} loading="eager" decoding="async" fetchPriority="low" className="lg:hidden mt-5"/>
                             <img src="/line.svg" alt="Line Icon" height={10} width={100} loading="eager" decoding="async" fetchPriority="low" className="hidden lg:block mt-5"/>
                             <p className="text-[#D8D8D8]/80 mt-4 text-[13.5px] xl:text-[20px] text-justify line-clamp-6 xl:line-clamp-5">{service.descricao}</p>
@@ -41,7 +43,7 @@ export async function ServiceCard({position, service}: CardProps) {
                                     <li key={index}><span className="line-clamp-1 xl:line-clamp-2">{name}</span></li>
                                 ))}
                             </ul>
-                            <Link href={`/service/${service.id}`} className="flex gap-1 text-[#DAA520] text-[13.5px] xl:text-[20px] mt-2.5">
+                            <Link href={`/service/${service.id}`} className="flex gap-1 text-[#DAA520] text-[13.5px] xl:text-[20px] mt-2.5 ml-1 xl:ml-5 cursor-pointer transition hover:scale-[1.02] xl:hover:scale-[1.05] xl:w-[250px]">
                                 Ver detalhes completo
                                 <img src="/arrow.svg" alt="Arrow Icon" width={13.5} height={10} loading="eager" decoding="async" fetchPriority="low" className="mt-[2.5px]"/>
                             </Link>
@@ -76,7 +78,7 @@ export async function OtherServiceCard({odd, service}: {odd:boolean, service: Se
                                     <li key={index}><span className="line-clamp-1 xl:line-clamp-2">{name}</span></li>
                                 ))}
                             </ul>
-                            <Link href={`/service/${service.id}`} className="flex gap-1 text-[#DAA520] text-[11px] xl:text-[20px] mt-2.5 cursor-pointer transition hover:scale-[1.05] xl:ml-5">
+                            <Link href={`/service/${service.id}`} className="flex gap-1 text-[#DAA520] text-[11px] xl:text-[20px] mt-2.5 ml-1 cursor-pointer transition hover:scale-[1.02] xl:hover:scale-[1.05] xl:ml-5">
                                 Ver detalhes completo
                                 <img src="/arrow.svg" alt="Arrow Icon" width={13.5} height={10} loading="eager" decoding="async" fetchPriority="low" className="mt-[2.5px]"/>
                             </Link>
