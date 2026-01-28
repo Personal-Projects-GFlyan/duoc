@@ -50,7 +50,7 @@ export default function About() {
                         <img src="/square.svg" alt="Square Icon" width={160} height={160} className="relative left-[145px] bottom-[125px] z-0 hidden xl:block"/>
                     </div>
                 </div>
-                <div className="flex gap-5 xl:gap-[30px] justify-center items-center relative bottom-[40px] xl:justify-start xl:static xl:mt-5  xl:max-w-[527.5px]">
+                <div className="flex gap-5 xl:gap-[30px] justify-center items-center relative bottom-[40px] xl:justify-start xl:static xl:max-w-[527.5px]">
                     <HistoryCard title="MISSÃO" text="Transformar espaços com soluções inteligentes, sustentáveis e humanas."/>
                     <HistoryCard title="VISÃO" text="Ser referência em arquitetura, engenharia e automação em Brasília. "/>
                 </div>
