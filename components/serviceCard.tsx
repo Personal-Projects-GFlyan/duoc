@@ -58,7 +58,7 @@ export async function OtherServiceCard({odd, service}: {odd:boolean, service: Se
     return(
         <article className="p-7 bg-[#1F1F1F] rounded-xl">
                 <div className={odd?"xl:flex flex-row-reverse justify-center gap-10 2xl:gap-32":"xl:flex justify-center gap-10 2xl:gap-32"}>
-                    <Link href={`/project/${service.id}`} className="cursor-pointer transition hover:scale-[1.02]">
+                    <Link href={`/service/${service.id}`} className="cursor-pointer transition hover:scale-[1.02]">
                         <div className="xl:mt-3 relative w-full xl:w-[550px] h-[175px] xl:h-[387.5px] rounded-xl overflow-hidden">
                             <Image
                                 src={service.urlimagem}
