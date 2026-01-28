@@ -17,7 +17,7 @@ export default function About() {
             </section>
 
             {/* HISTÓRIA */}
-            <section className="bg-[#07090A] w-full pt-2.5 px-7 xl:px-32 2xl:px-64 xl:py-10">
+            <section className="bg-[#07090A] w-full py-2.5 px-7 xl:px-32 2xl:px-64 xl:py-10">
                 <h1 className="text-[#DAA520] text-[14px] lg:text-[22px] lg:text-start">NOSSA HISTÓRIA</h1>
                 <div className="xl:flex xl:justify-between">
                     <div className="xl:max-w-[527.5px]">
@@ -57,7 +57,7 @@ export default function About() {
             </section>
 
             {/* VALORES */}
-            <section className="bg-[#010101] w-full lg:py-10 pb-5 flex flex-col justify-center items-center px-7 lg:px-10">
+            <section className="bg-[#010101] w-full lg:py-10 py-5 flex flex-col justify-center items-center px-7 lg:px-10">
                 <h1 className="text-[#DAA520] text-[15px] lg:text-[37px] lg:text-start px-7 lg:px-10">NOSSOS VALORES</h1>
                 <h2 className="text-white text-[23px] lg:text-[67px] font-bold">O Que Nos Guia</h2>
                 <img src="/line.svg" alt="Line Icon" height={10} width={100} loading="eager" decoding="async" fetchPriority="low" className="lg:hidden mt-2"/>
@@ -72,7 +72,7 @@ export default function About() {
             </section>
 
             {/* SERVIÇOS */}
-            <section className="bg-[#06090B] w-full pb-5 lg:pb-10 flex flex-col justify-center items-center px-7 lg:px-10">
+            <section className="bg-[#06090B] w-full py-5 lg:py-10 flex flex-col justify-center items-center px-7 lg:px-10">
                 <h1 className="text-white text-[20px] lg:text-[33px] font-bold">Conheça Nossos Serviços</h1>
                 <p className="text-center text-[12px] lg:text-[22px] lg:max-w-[870px] text-[#D8D8D8] mt-5">Descubra como podemos transformar seu projeto em realidade com nossas soluções integradas.</p>
                 <div className="flex justify-between mt-6 gap-5">
