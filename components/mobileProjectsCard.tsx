@@ -1,6 +1,10 @@
+"use client";
+
 import Link from "next/link";
+import { Ref } from "react";
 
 type CardPropsMobile = {
+    ref?: Ref<HTMLDivElement> | null;
     // category: string[],
     id: number,
     title: string,
@@ -9,9 +13,9 @@ type CardPropsMobile = {
     imageAlt: string;
 }
 
-export default function MobileProjectCard({ id, title, localization, imageSrc, imageAlt}:CardPropsMobile) {
+export default function MobileProjectCard({ref, id, title, localization, imageSrc, imageAlt}:CardPropsMobile) {
     return(
-        <article className="relative snap-center h-[200px] md:h-[300px] w-full shrink-0">
+        <article ref={ref} className="relative snap-center h-[200px] md:h-[300px] w-full shrink-0">
             <Link href={`/project/${id}`}>
                 <img src={imageSrc} alt={imageAlt} loading="eager" decoding="async" fetchPriority="low" className="h-[200px] md:h-[300px] w-full z-10"/>
                 <div className="p-5 z-30 absolute bottom-0 max-w-[275px] overflow-clip">

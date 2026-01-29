@@ -12,54 +12,52 @@ type Service = {
     escopo: string[];
 }
 
-export default function Carousel({services}: {services: Promise<Service[]>}) {
+function mod(n:number , m: number) {
+    return ((n % m) + m) % m;
+}
 
-    const allServices = use(services);
+export default function Carousel({services}: {services: Service[]}) {
+
     const ListCircles = [CircleComponent, CircleComponent];
-
-    function mod(n:number , m: number) {
-        return ((n % m) + m) % m;
-    }
-
-    const [leftHiddenPos, setLeftHiddenPos] = useState(mod(allServices.length-1, allServices.length));
+    const [leftHiddenPos, setLeftHiddenPos] = useState(mod(services.length-1, services.length));
     const [firstPos, setFirstPos] = useState(0);
-    const [secondPos, setSecondPos] = useState(mod(firstPos+1, allServices.length));
-    const [thirdPos, setThirdPos] = useState(mod(firstPos+2, allServices.length));
-    const [righttHiddenPos, setRightHiddenPos] = useState(mod(firstPos+3, allServices.length));
+    const [secondPos, setSecondPos] = useState(mod(firstPos+1, services.length));
+    const [thirdPos, setThirdPos] = useState(mod(firstPos+2, services.length));
+    const [righttHiddenPos, setRightHiddenPos] = useState(mod(firstPos+3, services.length));
     const [right, setRight] = useState(false);
     const [left, setLeft] = useState(false);
     const [active, setActive] = useState(false);
 
     function handleChangePrevious() {
         setActive(true);
-        setLeftHiddenPos(mod(leftHiddenPos-3, allServices.length));
-        setFirstPos(mod(firstPos-3,allServices.length));
-        setSecondPos(mod(secondPos-4,allServices.length));
-        setThirdPos(mod(thirdPos-4,allServices.length));
-        setRightHiddenPos(mod(righttHiddenPos-4,allServices.length));
+        setLeftHiddenPos(mod(leftHiddenPos-3, services.length));
+        setFirstPos(mod(firstPos-3,services.length));
+        setSecondPos(mod(secondPos-4,services.length));
+        setThirdPos(mod(thirdPos-4,services.length));
+        setRightHiddenPos(mod(righttHiddenPos-4,services.length));
         setLeft(true);
         setTimeout(() =>{    
             setLeft(false)
-            setSecondPos(mod(secondPos-3,allServices.length));
-            setThirdPos(mod(thirdPos-3,allServices.length));
-            setRightHiddenPos(mod(righttHiddenPos-3,allServices.length));
+            setSecondPos(mod(secondPos-3,services.length));
+            setThirdPos(mod(thirdPos-3,services.length));
+            setRightHiddenPos(mod(righttHiddenPos-3,services.length));
             setActive(false);
         }, 250);
     }
 
     function handleChangeNext() {
         setActive(true);
-        setLeftHiddenPos(mod(leftHiddenPos+4, allServices.length));
-        setFirstPos(mod(firstPos+4,allServices.length));
-        setSecondPos(mod(secondPos+4,allServices.length));
-        setThirdPos(mod(thirdPos+3,allServices.length));
-        setRightHiddenPos(mod(righttHiddenPos+3,allServices.length));
+        setLeftHiddenPos(mod(leftHiddenPos+4, services.length));
+        setFirstPos(mod(firstPos+4,services.length));
+        setSecondPos(mod(secondPos+4,services.length));
+        setThirdPos(mod(thirdPos+3,services.length));
+        setRightHiddenPos(mod(righttHiddenPos+3,services.length));
         setRight(true);
         setTimeout(() =>{  
             setRight(false);
-            setLeftHiddenPos(mod(leftHiddenPos+3, allServices.length));
-            setFirstPos(mod(firstPos+3,allServices.length));
-            setSecondPos(mod(secondPos+3,allServices.length));
+            setLeftHiddenPos(mod(leftHiddenPos+3, services.length));
+            setFirstPos(mod(firstPos+3,services.length));
+            setSecondPos(mod(secondPos+3,services.length));
             setActive(false);
         }, 250); 
     }
@@ -76,28 +74,28 @@ export default function Carousel({services}: {services: Promise<Service[]>}) {
                 <div className="relative flex gap-10 justify-center items-center max-w-[980px] min-w-[980px]">
                     <div className={right?"absolute transition duration-250 left-0 z-10":left? "hidden":"hidden"}>
                         <DesktopServiceCard 
-                            service={allServices[leftHiddenPos]} 
+                            service={services[leftHiddenPos]} 
                         />
                     </div>
 
                     <div className={right?"absolute left-0 min-w-[300px] transition durantion-250 translate-x-[340px] z-20": left? "hidden": "min-w-[300px]"}>
                         <DesktopServiceCard 
-                            service={allServices[firstPos]} 
+                            service={services[firstPos]} 
                         />
                     </div>
                     <div className={right?"absolute left-0 translate-x-[680px] min-w-[300px] transition durantion-250 z-30":left?"absolute right-0 -translate-x-[680px] transition durantion-250 z-30":"min-w-[300px]"}>
                         <DesktopServiceCard 
-                            service={allServices[secondPos]}
+                            service={services[secondPos]}
                         />
                     </div>
                     <div className={right?"hidden":left?"absolute right-0 min-w-[300px] transition durantion-250 -translate-x-[340px] z-20":"min-w-[300px]"}>
                         <DesktopServiceCard 
-                            service={allServices[thirdPos]}
+                            service={services[thirdPos]}
                         />
                     </div>   
                     <div className={right?"hidden":left?"absolute transition duration-250 right-0 z-10":"hidden"}>
                         <DesktopServiceCard 
-                            service={allServices[righttHiddenPos]}
+                            service={services[righttHiddenPos]}
                         />
                     </div> 
                 </div>

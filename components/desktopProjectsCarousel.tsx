@@ -1,8 +1,8 @@
 "use client";
 
 import CircleComponent from "@/components/circle";
-import { use, useState } from "react";
-import DesktopProjectCard from "./desktopProjectCardToCarousel";
+import { useState } from "react";
+import DesktopProjectCard from "./desktopProjectsCard";
 
 type ProjectCard = {
   id: number,
@@ -12,11 +12,9 @@ type ProjectCard = {
   altimagem: string;
 }
 
-export default function Carousel({projectsData}: {projectsData: Promise<ProjectCard[]>}) {
+export default function Carousel({projects}: {projects: ProjectCard[]}) {
 
     const ListCircles = [CircleComponent, CircleComponent];
-
-    const projects: ProjectCard[] = use(projectsData);
 
     function mod(n:number , m: number) {
         return ((n % m) + m) % m;

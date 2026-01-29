@@ -9,7 +9,7 @@ type  Info_imagem = {
     url: string
 };
 
-export default function Carousel({info_imagem}: {info_imagem: Info_imagem[]}) {
+export default function ProjectCarousel({info_imagem}: {info_imagem: Info_imagem[]}) {
     return(
         <>
             <div className="lg:hidden">

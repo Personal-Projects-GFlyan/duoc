@@ -1,8 +1,8 @@
 import { Suspense } from "react";
 import Link from "next/link";
-import ProjectInfos from "./project";
+import Project from "./project";
 
-export default function Project({params}: {params: Promise<{id: string}>}) {
+export default function ProjectPage({params}: {params: Promise<{id: string}>}) {
     return (
         <main>
             <Suspense fallback={<div className='h-screen bg-[#07090A] flex flex-col justify-center items-center'>
@@ -19,7 +19,7 @@ export default function Project({params}: {params: Promise<{id: string}>}) {
                                         />
                                     </div>
                                 </div>}>
-                <ProjectInfos params={params} />
+                <Project params={params} />
                 
             </Suspense>
             <section className="bg-[#06090B] w-full py-10 flex flex-col justify-center items-center px-7 lg:p-10">

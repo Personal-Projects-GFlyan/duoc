@@ -1,8 +1,8 @@
 import { Suspense } from 'react'
-import ServiceInfos from './service'
+import Service from './service'
 import Link from "next/link";
 
-export default async function Service({params}: {params: Promise<{id: string}>}) {
+export default async function ServicePage({params}: {params: Promise<{id: string}>}) {
     return (
         <main>
                 <Suspense fallback={
@@ -20,7 +20,7 @@ export default async function Service({params}: {params: Promise<{id: string}>})
                                             />
                                         </div>
                                     </div>}>
-                    <ServiceInfos params={params}/>
+                    <Service params={params}/>
                 </Suspense>
             <section className="bg-[#06090B] w-full py-5 lg:pb-10 flex flex-col justify-center items-center px-7 lg:px-10">
                 <h1 className="text-white text-[20px] md:text-[25px] lg:text-[33px] text-center font-bold">Interessado nesse serviço?</h1>

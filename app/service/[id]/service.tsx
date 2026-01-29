@@ -1,6 +1,9 @@
-import { OtherServiceCard } from "@/components/serviceCard";
+import { OtherServiceCard } from "@/components/servicesCard";
 import { getOtherServices_LimitedBy2, getServiceInfosById, getProjectsByServiceId_LimitedBy2 } from "@/lib/supabase/server"
-import { Portfolio } from "./portfolio";
+import { notFound } from "next/navigation";
+import MobileProjectCard from "@/components/mobileProjectCard";
+import DesktopProjectCard from "@/components/desktopProjectCard";
+import Link from "next/link";
 
 type Service = {
     id: number,
@@ -14,11 +17,14 @@ function isOdd(x: number) {
     return x % 2 !== 0;
 }
 
-export default async function ServiceInfos({params}: {params: Promise<{id: string}>}) {
+export default async function Service({params}: {params: Promise<{id: string}>}) {
     const { id } = await params;
     const serviceInfos = await getServiceInfosById(Number(id));
+    if(!serviceInfos) {
+        notFound();
+    }
+    const projects = await getProjectsByServiceId_LimitedBy2(Number(id));
     const otherServices: Service[] = await getOtherServices_LimitedBy2(Number(id));
-    const projects =  getProjectsByServiceId_LimitedBy2(Number(id));
 
     return(
         <>
@@ -70,8 +76,32 @@ export default async function ServiceInfos({params}: {params: Promise<{id: strin
             </section>
 
             {/* PORFÓLIO */}
-            <Portfolio serviceName={serviceInfos.nome} projectsData={projects}/>
+            {(projects.length === 0)?<></>:
+            <section className="bg-[#0B0E10] w-full py-10 lg:p-10 px-7 flex justify-center items-center">
+                <div className="w-full max-w-[1456px] flex flex-col justify-center items-center">
+                    <h1 className="text-[#DAA520] text-[15px] lg:text-[37px] px-7 lg:px-10">PORTFÓLIO</h1>
+                    <h2 className="text-white text-[23px] lg:text-[50px] lg:max-w-[800px] text-center font-bold">Projetos de <span className="text-[#DAA520]">{serviceInfos.nome}</span></h2>
+                    <img src="/line.svg" alt="Line Icon" height={10} width={100} loading="eager" decoding="async" fetchPriority="low" className="lg:hidden mt-2"/>
+                    <img src="/line.svg" alt="Line Icon" height={10} width={280} loading="eager" decoding="async" fetchPriority="low" className="hidden lg:block mt-2"/> 
+                    <div className="lg:hidden flex flex-col md:flex-row gap-5 mt-5 justify-center items-center w-full max-w-[1456px]">
+                        {projects.map((project, index) => (
+                            <MobileProjectCard key={index} id={project.id} title={project.nome} localization={project.localizacao} imageSrc={project.urlimagem} imageAlt={project.altimagem}/>
+                        ))}
+                    </div>
+                    <div className="hidden lg:grid mt-10 grid-cols-2 gap-10 w-full max-w-[1456px]">
+                        {projects.map((project, index) => (
+                            <DesktopProjectCard key={index} id={project.id} title={project.nome} localization={project.localizacao} imageSrc={project.urlimagem} imageAlt={project.altimagem}/>
+                        ))}
+                    </div>
+                    <div className="flex justify-between mt-6 gap-5">
+                        <Link href="/projects" className="font-bold bg-[#DAA520] text-[14px] lg:text-[19px] py-1 px-5 lg:px-4 transition hover:scale-105 cursor-pointer mt-5">
+                            VER PORTFÓLIO COMPLETO
+                        </Link>
+                    </div>
+                </div>
+            </section>}
 
+            {(otherServices.length === 0)?<></>:
             <section className="bg-[#06090B] w-full py-10 lg:p-10 px-7 flex flex-col justify-center items-center">
                 <h1 className="text-[#DAA520] text-[15px] lg:text-[37px] text-center">EXPLORE MAIS</h1>
                 <h2 className="text-[#D8D8D8] text-[23px] lg:text-[50px] text-center font-bold">Outros Serviços</h2>
@@ -84,7 +114,7 @@ export default async function ServiceInfos({params}: {params: Promise<{id: strin
                         odd={isOdd(index)}
                         service={service}/>))}        
                 </div>
-            </section>
+            </section>}
         </>
     );
 }

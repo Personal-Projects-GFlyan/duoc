@@ -1,7 +1,7 @@
 import Link from "next/link"
 import Image from "next/image"
 import { Suspense } from 'react'
-import ServicesSet from "@/components/services"
+import Services from "@/components/services"
 
 export default async function ServicesPage() {
     return(
@@ -30,7 +30,7 @@ export default async function ServicesPage() {
                                                 }}
                                                 />
                                         </div>}>
-                        <ServicesSet/>
+                        <Services/>
                     </Suspense>
                 </div>
             </section>

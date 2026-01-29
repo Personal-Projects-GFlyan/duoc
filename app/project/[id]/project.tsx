@@ -1,13 +1,15 @@
-import Carousel from "@/components/projectCarousel";
+import ProjectCarousel from "@/components/projectCarousel";
 import { getOtherProjectsInfos_LimitedBy3, getProjectInfo } from "@/lib/supabase/server";
-import dynamic from "next/dynamic";
+import OtherProjectsCarousel from "@/components/otherProjectsCarousel";
+import { notFound } from "next/navigation";
 
-const OtherProjects = dynamic(()=> import("./otherProject"), {loading: ()=>null});
-
-export default async function ProjectInfos({params}: {params: Promise<{id: string}>}) {
+export default async function Project({params}: {params: Promise<{id: string}>}) {
     const { id } = await params;
     const project = await getProjectInfo(Number(id));
-    const otherProjects = getOtherProjectsInfos_LimitedBy3(13);
+    if(!project) {
+        notFound();
+    }
+    const otherProjects = await getOtherProjectsInfos_LimitedBy3(Number(id));
     return (
         <>
             <section className="bg-[#07090A] w-full py-10 px-7 lg:p-10 text-[#D8D8D8] flex justify-center items-center">
@@ -19,7 +21,7 @@ export default async function ProjectInfos({params}: {params: Promise<{id: strin
                     <div className="w-full flex justify-center items-center">
                         <div className="flex flex-col justify-center items-center xl:flex-row xl:items-start xl:gap-10 w-full">
                             <div className="w-full">
-                                <Carousel info_imagem={project.info_imagem}/>
+                                <ProjectCarousel info_imagem={project.info_imagem}/>
                             </div>
                             <article className="bg-[#0E1011] border border-[#1F1F1F] rounded-xl p-5 md:p-7 lg:p-10 w-full max-w-[375px] md:max-w-[500px] lg:max-w-[600px] lg:w-full lg:min-h-[250px] lg:max-h-[250px] xl:min-w-[420px] xl:max-w-full mt-5 lg:mt-10">
                                 <h1 className="font-bold text-[14px] md:text-[18px] lg:text-[22px]">Informações do Projeto</h1>
@@ -45,8 +47,14 @@ export default async function ProjectInfos({params}: {params: Promise<{id: strin
                     </div>
                 </div>
             </section>
-            <div className="w-full">
-                <OtherProjects otherProjects={otherProjects}/>
-            </div>
+
+            {(otherProjects.length === 0)?<></>:
+            <section className="bg-[#0B0E10] w-full py-10 px-7 lg:p-10 flex justify-center items-center">
+                <div className='w-full max-w-[1456px]'>
+                    {(otherProjects.length === 1)?(<></>): 
+                    (<OtherProjectsCarousel projects={otherProjects}/>)}
+                </div>
+            </section>
+            }
         </>);
 }

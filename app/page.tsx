@@ -4,8 +4,9 @@ import HeroButtons from "@/components/heroButtons";
 import CardWho from "@/components/card-who";
 import ServicesCarousel from "@/components/servicesCarousel";
 import ProjectsCarousel from "@/components/projectsCarousel";
+import { Suspense } from "react";
 
-export default function Home() {
+export default function HomePage() {
 
     const partnerLabels = [
         {title: "ABB", urlSvg: "/ABB-Logo.svg", widthMobile: 100, heigthMobile: 40, widthDesktop: 150, heigthDesktop: 80},
@@ -90,8 +91,20 @@ export default function Home() {
                     </h2>
                     <img src="/line.svg" alt="Line Icon" height={10} width={100} loading="eager" decoding="async" fetchPriority="low" className="md:hidden"/>
                     <img src="/line.svg" alt="Line Icon" height={10} width={150} loading="eager" decoding="async" fetchPriority="low" className="hidden md:block mt-2"/>
-
-                    <ServicesCarousel/>
+                    <Suspense fallback={<div className="relative w-12 h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 xl:w-20 xl:h-20 animate-spin rounded-full mt-14 mb-10">
+                                            <div
+                                                className="absolute inset-0 rounded-full"
+                                                style={{
+                                                    background: 'conic-gradient(#DAA520, #000000)',
+                                                    WebkitMask:
+                                                    'radial-gradient(farthest-side, transparent calc(100% - 8px), black calc(100% - 8px))',
+                                                    mask:
+                                                    'radial-gradient(farthest-side, transparent calc(100% - 8px), black calc(100% - 8px))',
+                                                }}
+                                            />
+                                        </div>}>
+                        <ServicesCarousel/>
+                    </Suspense>
                     <Link href={"/services"} className="block text-[#0B0E10] bg-[#DAA520] mt-5 lg:mt-10 font-bold text-[13px] lg:text-[17px] py-1 w-[225px] lg:w-[300px] transition hover:scale-105 text-center">
                             CONHEÇA NOSSOS SERVIÇOS
                     </Link>
@@ -105,7 +118,20 @@ export default function Home() {
                     </h2>
                     <img src="/line.svg" alt="Line Icon" height={10} width={100} loading="eager" decoding="async" fetchPriority="low" className="md:hidden"/>
                     <img src="/line.svg" alt="Line Icon" height={10} width={150} loading="eager" decoding="async" fetchPriority="low" className="hidden md:block mt-2"/>
-                    <ProjectsCarousel/>
+                    <Suspense fallback={<div className="relative w-12 h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 xl:w-20 xl:h-20 animate-spin rounded-full mt-14 mb-10">
+                                            <div
+                                                className="absolute inset-0 rounded-full"
+                                                style={{
+                                                    background: 'conic-gradient(#DAA520, #000000)',
+                                                    WebkitMask:
+                                                    'radial-gradient(farthest-side, transparent calc(100% - 8px), black calc(100% - 8px))',
+                                                    mask:
+                                                    'radial-gradient(farthest-side, transparent calc(100% - 8px), black calc(100% - 8px))',
+                                                }}
+                                            />
+                                        </div>}>
+                        <ProjectsCarousel/>
+                    </Suspense>
                     <Link href={"/projects"} className="block text-[#0B0E10] bg-[#DAA520] mt-5 lg:mt-10 font-bold text-[13px] lg:text-[17px] py-1 w-[225px] lg:w-[300px] transition hover:scale-105 text-center">
                             VER PORTFÓLIO COMPLETO
                     </Link>

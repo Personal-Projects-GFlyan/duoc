@@ -12,7 +12,7 @@ type ProjectCard = {
 
 const Mobile = dynamic(()=> import("@/components/mobileOtherProjectsCarousel"), {loading: ()=> null});
 
-export default function Carousel({projects}: {projects: ProjectCard[]}) {
+export default function OtherProjectsCarousel({projects}: {projects: ProjectCard[]}) {
     return(
         <>
             <div className="lg:hidden flex flex-col justify-center items-center">

@@ -3,7 +3,7 @@ import Image from "next/image"
 import { HistoryCard, ValueCard }from "@/components/aboutCards"
 
 
-export default function About() {
+export default function AboutPage() {
     return(
         <main>
             {/* SOBRE */}

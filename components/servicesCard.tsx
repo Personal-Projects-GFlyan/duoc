@@ -18,7 +18,7 @@ function isPair(position: number) {
     return position%2 === 0;
 }
 
-export async function ServiceCard({position, service}: CardProps) {
+export async function ServicesCard({position, service}: CardProps) {
 
     return(
         <article className="w-full max-w-[400px] lg:max-w-[600px] xl:max-w-full">
