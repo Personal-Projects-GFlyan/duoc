@@ -9,11 +9,11 @@ type CardPropsDesktop = {
     imageAlt: string;
 }
 
-export default function DesktopProjectCard({title, id, localization, imageSrc, imageAlt}: CardPropsDesktop) {
+export default function DesktopProjectCard({id, title, localization, imageSrc, imageAlt}: CardPropsDesktop) {
     return(
-        <article className="relative max-w-full h-[300px] xl:h-[400px] 2xl:h-[450px] rounded-xl bg-purple-500 transition hover:scale-[1.02] overflow-hidden">
+        <article className="relative w-full h-[200px] xl:h-[250px] 2xl:h-[275px] rounded-xl transition hover:scale-105 overflow-hidden">
             <Link href={`/project/${id}`}>
-                <img src={imageSrc} alt={imageAlt} loading="eager" decoding="async" fetchPriority="low" className="absolute min-w-full h-[300px] xl:h-[400px] 2xl:h-[450px] z-10"/>
+                <img src={imageSrc} alt={imageAlt} loading="eager" decoding="async" fetchPriority="low" className="absolute w-full h-[250px] xl:h-[250px] 2xl:h-[275px] z-10"/>
                 <div className="p-5 z-30 absolute bottom-0 max-w-[275px] overflow-clip">
                     {/* <h1 className="text-[#DAA520] font-bold text-[10px] absolute top-[7.5px]">{category}</h1> */}
                     <h2 className="text-white font-bold text-[18px]">{title}</h2>

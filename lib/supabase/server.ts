@@ -91,7 +91,6 @@ export async function getOtherServices_LimitedBy2(id: number): Promise<Service[]
   }
 }
 
-
 type ProjectCard = {
   id: number,
   nome: string,
@@ -166,6 +165,29 @@ export async function getProjectInfo(id: number): Promise<ProjectInfo> {
     const supabase = await createClient();
     const {data, error} = await supabase.rpc("getprojectinfos", {projectid: id}).single();
     return data as ProjectInfo;
+  } catch(error) {
+    throw error;
+  } 
+}
+
+export async function getOtherProjectsInfos_LimitedBy3(projectId: number): Promise<ProjectCard[]> {
+  try{
+    const supabase = await createClient();
+    const {data: projectsData, error} = await supabase.from("projeto").select("id, nome, localizacao").neq("id", projectId).limit(3);
+    if(projectsData == null) return [];
+    const projects: ProjectCard[] = [];
+    for(const project of projectsData) { 
+      const {data: projectImg, error} = await supabase.from("imagem_projeto").select("url, alt").match({"idprojeto": project.id, "pos": 1}).single();
+      if(projectImg == null) return[];
+      projects.push({
+        id: project.id,
+        nome: project.nome,
+        localizacao: project.localizacao,
+        urlimagem: projectImg.url,
+        altimagem: projectImg.alt
+      });
+    }
+    return projects;
   } catch(error) {
     throw error;
   } 

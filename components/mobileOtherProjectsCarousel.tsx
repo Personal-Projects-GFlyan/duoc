@@ -1,8 +1,8 @@
 "use client";
 
-import { use, useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import CircleComponent from "@/components/circle";
-import MobileProjectCard from "./mobileProjectCard";"@/components/mobileProjectCard";
+import MobileOtherProjectCard from "./mobileOtherProjectCard";
 
 type ProjectCard = {
   id: number,
@@ -12,9 +12,8 @@ type ProjectCard = {
   altimagem: string;
 }
 
-export default function Carousel({projectsData}: {projectsData: Promise<ProjectCard[]>}) {
+export default function Carousel({projects}: {projects: ProjectCard[]}) {
 
-   const projects: ProjectCard[] = use(projectsData);
    const ListRef = useRef<(HTMLDivElement | null)[]>([]);
    const containerRef = useRef<HTMLDivElement | null>(null);
    const [active, setActive] = useState(0);
@@ -44,10 +43,10 @@ export default function Carousel({projectsData}: {projectsData: Promise<ProjectC
     }, []);
 
     return( 
-        <div className="w-full flex flex-col justify-center items-center gap-5 mt-5 ">
-            <div ref={containerRef} className="flex gap-1 max-w-[300px] overflow-auto scrollbar-hide snap-x snap-mandatory rounded-xl scroll-smooth">
+        <div className="flex flex-col justify-center items-center gap-5 mt-10">
+            <div ref={containerRef} className="w-full min-h-[200px] max-w-[375px] md:max-w-[500px] md:min-h-[300px] flex gap-0.5 overflow-auto scrollbar-hide snap-x snap-mandatory rounded-xl scroll-smooth">
                {projects.map((project, index)=>(
-                <MobileProjectCard key={index}
+                <MobileOtherProjectCard key={index}
                     ref={(el) => {ListRef.current[index] = el}}
                     id={project.id}
                     title={project.nome} 
