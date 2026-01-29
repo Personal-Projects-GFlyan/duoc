@@ -45,7 +45,7 @@ export default function Carousel({projectsData}: {projectsData: Promise<ProjectC
 
     return( 
         <div className="w-full flex flex-col justify-center items-center gap-5 mt-5 ">
-            <div ref={containerRef} className="flex gap-1 max-w-[300px] overflow-auto scrollbar-hide snap-x snap-mandatory rounded-xl scroll-smooth">
+            <div ref={containerRef} className="flex gap-1 w-full max-w-[400px] overflow-auto scrollbar-hide snap-x snap-mandatory rounded-xl scroll-smooth">
                {projects.map((project, index)=>(
                 <MobileProjectCard key={index}
                     ref={(el) => {ListRef.current[index] = el}}
