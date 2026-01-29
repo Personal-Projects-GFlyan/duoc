@@ -15,9 +15,9 @@ type CardPropsMobile = {
 
 export default function MobileProjectCard({ref, id, title, localization, imageSrc, imageAlt}:CardPropsMobile) {
     return(
-        <article ref={ref} className="relative min-w-full md:max-w-full min-h-[250px] sm:min-h-[300px] md:min-h-[250px] snap-center rounded-xl">
+        <article ref={ref} className="relative snap-center h-[200px] md:h-[300px] w-full shrink-0">
             <Link href={`/project/${id}`}>
-                <img src={imageSrc} alt={imageAlt} loading="eager" decoding="async" fetchPriority="low" className="w-full h-[250px] sm:min-h-[300px] z-10"/>
+                <img src={imageSrc} alt={imageAlt} loading="eager" decoding="async" fetchPriority="low" className="h-[200px] md:h-[300px] w-full z-10"/>
                 <div className="p-5 z-30 absolute bottom-0 max-w-[275px] overflow-clip">
                     {/* <h1 className="text-[#DAA520] font-bold text-[10px] absolute top-[7.5px]">{category}</h1> */}
                     <h2 className="text-white font-bold text-[18px]">{title}</h2>

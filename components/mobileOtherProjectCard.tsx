@@ -17,7 +17,7 @@ export default function MobileOtherProjectCard({ref, id, title, localization, im
     return(
         <article ref={ref} className="relative snap-center h-[200px] md:h-[300px] w-full shrink-0">
             <Link href={`/project/${id}`} className="cursor-pointer">
-                <img src={imageSrc} alt={imageAlt} loading="eager" decoding="async" fetchPriority="low" className="snap-center h-[200px] md:h-[300px] w-full z-10"/>
+                <img src={imageSrc} alt={imageAlt} loading="eager" decoding="async" fetchPriority="low" className="h-[200px] md:h-[300px] w-full z-10"/>
                 <div className="p-5 z-30 absolute bottom-0 w-full overflow-clip">
                     {/* <h1 className="text-[#DAA520] font-bold text-[10px] absolute top-[7.5px]">{category}</h1> */}
                     <h1 className="text-white font-bold text-[18px] md:text-[22px]">{title}</h1>
