@@ -83,7 +83,7 @@ export default async function Service({params}: {params: Promise<{id: string}>})
                     <h2 className="text-white text-[23px] lg:text-[50px] lg:max-w-[800px] text-center font-bold">Projetos de <span className="text-[#DAA520]">{serviceInfos.nome}</span></h2>
                     <img src="/line.svg" alt="Line Icon" height={10} width={100} loading="eager" decoding="async" fetchPriority="low" className="lg:hidden mt-2"/>
                     <img src="/line.svg" alt="Line Icon" height={10} width={280} loading="eager" decoding="async" fetchPriority="low" className="hidden lg:block mt-2"/> 
-                    <div className="lg:hidden flex flex-col md:flex-row gap-5 mt-5 justify-center items-center w-full max-w-[1456px]">
+                    <div className="lg:hidden flex flex-col md:grid md:grid-cols-2 gap-5 mt-5 justify-center items-center w-full max-w-[1456px]">
                         {projects.map((project, index) => (
                             <MobileProjectCard key={index} id={project.id} title={project.nome} localization={project.localizacao} imageSrc={project.urlimagem} imageAlt={project.altimagem}/>
                         ))}

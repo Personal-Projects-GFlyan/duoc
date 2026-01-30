@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import CircleComponent from "@/components/circle";
-import MobileProjectCard from "./mobileProjectsCard";"@/components/mobileProjectCard";
+import MobileProjectCard from "./mobileProjectsCard";
 
 type ProjectCard = {
   id: number,
