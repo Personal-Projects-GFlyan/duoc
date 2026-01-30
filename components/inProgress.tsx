@@ -70,7 +70,7 @@ export default function InProgress({servicesAndProjectsInProgress, allProjectsIn
                 {projects.length===1?(
                     projects.map((project, index)=>(
                         <div key={index} className="w-full mt-5 xl:mt-6 flex justify-center items-center">
-                            <div className="lg:hidden rounded-xl overflow-hidden max-w-[400px] w-full">
+                            <div className="lg:hidden rounded-xl overflow-hidden max-w-[400px] w-full pb-6">
                                 <MobileProjectCard id={project.id} title={project.nome} localization={project.localizacao} imageSrc={project.urlimagem} imageAlt={project.altimagem}/> 
                             </div>
                             <div className="hidden lg:block">
