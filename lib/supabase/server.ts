@@ -192,3 +192,31 @@ export async function getOtherProjectsInfos_LimitedBy3(projectId: number): Promi
     throw error;
   } 
 }
+
+type S_P_InProgress = {
+  id: number
+  nome: string,
+  projects: ProjectCard[];
+}
+
+export async function getAllProjectsInProgress(): Promise<ProjectCard[]> {
+  try{
+    const supabase = await createClient();
+    const {data, error} = await supabase.from("v_allprojectsinprogress").select("*");
+
+    return data as ProjectCard[];
+  } catch(error) {
+    throw error;
+  } 
+}
+
+export async function getServicesAndProjectsInProgress(): Promise<S_P_InProgress[]> {
+  try{
+    const supabase = await createClient();
+    const {data, error} = await supabase.from("v_servicesandprojectsinprogress").select("*");
+
+    return data as S_P_InProgress[];
+  } catch(error) {
+    throw error;
+  } 
+}

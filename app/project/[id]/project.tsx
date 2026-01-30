@@ -13,7 +13,7 @@ export default async function Project({params}: {params: Promise<{id: string}>})
     return (
         <>
             <section className="bg-[#07090A] w-full py-10 px-7 lg:p-10 text-[#D8D8D8] flex justify-center items-center">
-                <div className="max-w-[1456px]">
+                <div className="w-full max-w-[1456px]">
                     <h1 className="text-[23px] md:text-[30px] lg:text-[67px] font-bold mt-[75px] max-w-[1456px]">{project.nome}</h1>
                     <h2 className="text-left text-[12px] md:text-[18px] lg:text-[22px] text-[#D8D8D8] mt-2 max-w-[1456px]">{project.descricao}</h2>
                     <img src="/line.svg" alt="Line Icon" height={10} width={130} loading="eager" decoding="async" fetchPriority="low" className="lg:hidden mt-5"/>

@@ -46,7 +46,7 @@ export default function HomePage() {
                                     <div className="relative md:static flex flex-col md:flex-col-reverse">
                                         <img src="/line.svg" alt="Line Icon" height={10} width={100} loading="eager" decoding="async" fetchPriority="low" className="md:hidden absolute bottom-[11.5px]"/>
                                         <img src="/line.svg" alt="Line Icon" height={10} width={160} loading="eager" decoding="async" fetchPriority="low" className="hidden md:block md:mt-7"/>
-                                        <h2 className="text-[#DAA520] text-[6.22px] md:text-[30px] font-bold md:absolute md:top-[58px]">Arquitetura e Engenharia</h2>
+                                        <h2 className="text-[#DAA520] text-[6px] md:text-[30px] font-bold md:absolute md:top-[58px]">Arquitetura e Engenharia</h2>
                                     </div>
                                 </div>
                                 <p className="md:hidden text-[#D8D8D8] text-[10px] w-[265px] text-justify">
