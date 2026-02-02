@@ -4,7 +4,6 @@ import InProgress from "./inProgress";
 export default async function Projects() {
     const servicesAndProjectsInProgress = await getServicesAndProjectsInProgress();
     const allProjectsInProgress = await getAllProjectsInProgress();
-    console.log(servicesAndProjectsInProgress);
     return(
         <> 
             {(servicesAndProjectsInProgress.length === 0)?

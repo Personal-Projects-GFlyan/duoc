@@ -1,8 +1,6 @@
 "use client";
 
-import { useState, Ref, useEffect, use } from "react";
-import MobileProjectCard from "./mobileProjectsCard";
-import DesktopProjectCard from "./desktopProjectsCard";
+import { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 
 const Carousel = dynamic(()=> import("@/components/inProgressCarousel"), {ssr: false});
@@ -44,21 +42,20 @@ export default function InProgress({servicesAndProjectsInProgress, allProjectsIn
 
     return(
         <>
-            <ul className=" text-[#999999] text-[11px] md:text-[18px]  flex flex-col justify-center items-center mt-5">
-                <li className={!active?"rounded-xl md:rounded-2xl bg-[#DAA520] border border-[#DAA520] px-5 py-1 text-[#000000] font-bold" :"border border-[#999999] rounded-xl md:rounded-2xl bg-[#0F0F0F] px-5 py-1"}>
-                    <button className="line-clamp-1 text-start" 
+            <ul className=" text-[#999999] text-[11px] md:text-[18px]  flex flex-col justify-center items-center mt-7 sm:mt-10">
+                <li className={!active?"rounded-xl sm:rounded-2xl md:rounded-3xl bg-[#DAA520] border border-[#DAA520] px-5 py-1 sm:py-1.5 text-[#000000] font-bold" :"border border-[#999999] rounded-xl sm:rounded-2xl md:rounded-3xl bg-[#0F0F0F] px-5 py-1 sm:py-1.5"}>
+                    <button className="w-full truncate text-start" 
                             onClick={()=>{setActive(0)}}>
                         Todos
                     </button>
                 </li>
                 {(servicesAndProjectsInProgress.length === 1)?
                     <></>:
-                    <div className="grid grid-cols-3 gap-5 mt-5">
+                    <div className="flex flex-wrap  justify-center items-center gap-5 mt-5">
                         {servicesAndProjectsInProgress.map((service, index)=>(
-                            <li key={index} className={isActive(service.id)?"rounded-xl md:rounded-2xl bg-[#DAA520] border-[#DAA520] text-[#000000] px-3 py-1 font-bold" :"border border-[#999999] rounded-xl md:rounded-2xl bg-[#0F0F0F] px-3 py-1"}
-                        >
-                                <button className="line-clamp-1 text-start"
-                                        onClick={()=>{setActive(service.id)}}>
+                            <li key={index} className={isActive(service.id)?"rounded-xl sm:rounded-2xl md:rounded-3xl bg-[#DAA520] border-[#DAA520] text-[#000000] px-3 py-1 sm:py-1.5 font-bold" :"border border-[#999999] rounded-xl sm:rounded-2xl md:rounded-3xl bg-[#0F0F0F] px-3 py-1 sm:py-1.5"}>
+                                <button className="max-w-[60px] sm:max-w-[150px] md:max-w-[175px] xl:max-w-[200px] w-full truncate text-start"
+                                        onClick={()=>{setActive(service.id)}}>  
                                     {service.nome}
                                 </button>
                             </li>
@@ -66,23 +63,8 @@ export default function InProgress({servicesAndProjectsInProgress, allProjectsIn
                     </div>
                 }
             </ul>
-            <div className="w-full">
-                {projects.length===1?(
-                    projects.map((project, index)=>(
-                        <div key={index} className="w-full mt-5 xl:mt-6 flex justify-center items-center">
-                            <div className="lg:hidden rounded-xl overflow-hidden max-w-[400px] w-full pb-6">
-                                <MobileProjectCard id={project.id} title={project.nome} localization={project.localizacao} imageSrc={project.urlimagem} imageAlt={project.altimagem}/> 
-                            </div>
-                            <div className="hidden lg:block">
-                                <DesktopProjectCard  id={project.id} title={project.nome} localization={project.localizacao} imageSrc={project.urlimagem} imageAlt={project.altimagem}/>
-                            </div>
-                        </div>
-                    ))
-                ):
-                <>
-                 <Carousel projects={projects}/>
-                </>}
-                
+            <div className="w-full mt-5 sm:mt-10 lg:mt-5 flex justify-center items-center gap-10">
+                 <Carousel projects={projects}/>  
             </div>
 
         </>

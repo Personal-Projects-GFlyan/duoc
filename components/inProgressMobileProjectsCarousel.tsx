@@ -40,7 +40,7 @@ export default function Carousel({projects}: {projects: ProjectCard[]}) {
             setActiveCircle(cardRef, index)
         ));
 
-    }, [projects]);
+    }, []);
 
     return( 
         <div className="w-full flex flex-col justify-center items-center gap-5 mt-5 ">
