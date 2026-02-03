@@ -18,7 +18,7 @@ export default function HomePage() {
         {title: "Localização", subtitle: "Assis Chateaubriand, 3º Andar, Salas 306, 308 e 310. Asa Sul, Brasília - DF", urlSvg: "/Pin.svg", url:"https://maps.app.goo.gl/5HpK5qe26eEuMwNt5", widthMobile: 12.5, heigthMobile: 12.5, widthDesktop: 22.5, heigthDesktop: 22.5},
         {title: "Telefone", subtitle: "(61) 99525-5617", urlSvg: "/Phone.svg", url:"tel:+5561995255617", widthMobile: 15, heigthMobile: 15, widthDesktop: 25, heigthDesktop: 25},
         {title: "WhatsApp", subtitle: "(61) 99525-5617", urlSvg: "/WhatsApp.svg", url:"https://wa.me/5561995255617", widthMobile: 15, heigthMobile: 15, widthDesktop: 25, heigthDesktop: 25},
-        {title: "E-mail", subtitle: "contato@duoc.eng.br", urlSvg: "/Email.svg", url:"mailto:contato@duoc.com.br", widthMobile: 15, heigthMobile: 15, widthDesktop: 25, heigthDesktop: 25},
+        {title: "E-mail", subtitle: "contato@duoc.eng.br", urlSvg: "/Email.svg", url:"mailto:contato@duoc.eng.br", widthMobile: 15, heigthMobile: 15, widthDesktop: 25, heigthDesktop: 25},
     ]
 
     return(

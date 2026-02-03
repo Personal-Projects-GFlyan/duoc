@@ -37,7 +37,7 @@ export default async function Service({params}: {params: Promise<{id: string}>})
                 </div>
             </section>
 
-            <section className="bg-[#07090A] px-7 lg:px-10 pb-14 flex justify-center items-center">
+            <section className="bg-[#07090A] px-7 lg:px-10 pb-14 xl:pb-20 flex justify-center items-center">
                 <div className="w-full max-w-[1456px] flex flex-col sm:flex-row gap-7 overflow-auto scrollbar-hide xl:grid xl:grid-cols-3">
                     <article className="bg-[#0E1011] text-[#D8D8D8] p-7 rounded-xl border-[1px] border-[#1F1F1F] max-w-[360px] sm:min-w-[360px] lg:max-w-full">
                         <h1 className="text-[15px] md:text-[19px] lg:text-[22px] font-bold">Escopo do Serviço</h1>
@@ -77,7 +77,7 @@ export default async function Service({params}: {params: Promise<{id: string}>})
 
             {/* PORFÓLIO */}
             {(projects.length === 0)?<></>:
-            <section className="bg-[#0B0E10] w-full py-10 lg:p-10 px-7 flex justify-center items-center">
+            <section className="bg-[#0B0E10] w-full py-10 lg:p-14 px-7 flex justify-center items-center">
                 <div className="w-full max-w-[1456px] flex flex-col justify-center items-center">
                     <h1 className="text-[#DAA520] text-[15px] lg:text-[37px] px-7 lg:px-10">PORTFÓLIO</h1>
                     <h2 className="text-white text-[23px] lg:text-[50px] lg:max-w-[800px] text-center font-bold">Projetos de <span className="text-[#DAA520]">{serviceInfos.nome}</span></h2>
@@ -102,12 +102,12 @@ export default async function Service({params}: {params: Promise<{id: string}>})
             </section>}
 
             {(otherServices.length === 0)?<></>:
-            <section className="bg-[#06090B] w-full py-10 lg:p-10 px-7 flex flex-col justify-center items-center">
+            <section className="bg-[#06090B] w-full py-10 lg:px-10 lg:py-14  px-7 flex flex-col justify-center items-center">
                 <h1 className="text-[#DAA520] text-[15px] lg:text-[37px] text-center">EXPLORE MAIS</h1>
                 <h2 className="text-[#D8D8D8] text-[23px] lg:text-[50px] text-center font-bold">Outros Serviços</h2>
                 <img src="/line.svg" alt="Line Icon" height={10} width={100} loading="eager" decoding="async" fetchPriority="low" className="lg:hidden mt-2"/>
                 <img src="/line.svg" alt="Line Icon" height={10} width={280} loading="eager" decoding="async" fetchPriority="low" className="hidden lg:block mt-2"/> 
-                <div className="flex flex-col gap-7 mt-5 lg:mt-10 w-full 2xl:max-w-[1456px] justify-center items-center">
+                <div className="flex flex-col md:flex-row gap-7 mt-5 lg:mt-10 w-full 2xl:max-w-[1456px] justify-center items-center">
                     {otherServices.map((service, index) => (
                         <OtherServiceCard
                         key={index} 

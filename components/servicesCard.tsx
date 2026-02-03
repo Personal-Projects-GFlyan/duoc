@@ -58,9 +58,9 @@ export async function ServicesCard({position, service}: CardProps) {
 
 export async function OtherServiceCard({odd, service}: {odd:boolean, service: Service}) {
     return(
-        <article className="p-7 bg-[#1F1F1F] rounded-xl w-full max-w-[400px] lg:max-w-[600px] xl:max-w-full">
-            <div className={odd?"xl:flex flex-row-reverse justify-between":"xl:flex justify-between"}>
-                <div className={odd?"xl:mt-2 xl:ml-5 relative w-full h-[195px] sm:h-[220px] md:h-[250px] lg:h-[320px] xl:h-[387.5px] rounded-xl overflow-hidden transition hover:scale-[1.02]":"xl:mt-2 xl:mr-5 relative w-full h-[195px] sm:h-[220px] md:h-[250px] lg:h-[320px] xl:h-[387.5px] rounded-xl overflow-hidden transition hover:scale-[1.02]"}>
+        <article className="p-7 bg-[#1F1F1F] rounded-xl w-full max-w-[400px] md:max-w-[600px] xl:max-w-full">
+            <div className={odd?"md:flex justify-between gap-2.5 items-center":"md:flex flex-row-reverse justify-between items-center gap-2.5"}>
+                <div className={odd?"xl:mt-2 xl:ml-5 relative w-full h-[195px] sm:h-[220px] md:min-w-[100px] md:max-h-[150px] lg:min-h-[175px] xl:min-h-[200px] rounded-xl overflow-hidden transition hover:scale-[1.02]":"xl:mt-2 xl:mr-5 relative w-full h-[195px] sm:h-[220px] md:min-w-[100px] md:max-h-[150px] lg:min-h-[175px] xl:min-h-[200px] rounded-xl overflow-hidden transition hover:scale-[1.02]"}>
                     <Link href={`/service/${service.id}`}>
                         <Image
                             src={service.urlimagem}
@@ -71,18 +71,17 @@ export async function OtherServiceCard({odd, service}: {odd:boolean, service: Se
                     </Link>
                 </div>
                 <div className="xl:max-w-[631px]">        
-                    <h1 className="text-[#D8D8D8] text-[21px] md:text-[25px] lg:text-[31px] font-bold mt-5 xl:mt-0 ">{service.nome}</h1>
+                    <h1 className="text-[#D8D8D8] text-[20px] md:text-[10px] lg:text-[14px] font-bold mt-5 xl:mt-0 ">{service.nome}</h1>
                     <img src="/line.svg" alt="Line Icon" height={10} width={75} loading="eager" decoding="async" fetchPriority="low" className="lg:hidden mt-5"/>
                     <img src="/line.svg" alt="Line Icon" height={10} width={100} loading="eager" decoding="async" fetchPriority="low" className="hidden lg:block mt-5"/>
-                    <p className="text-[#D8D8D8]/80 mt-4 text-[13.5px] md:text-[17px] lg:text-[20px] text-justify line-clamp-6 xl:line-clamp-5">{service.descricao}</p>
-                    <ul className="grid grid-cols-2 list-disc marker:text-[#DAA520] text-[#D8D8D8]/60 font-bold text-[10px] md:text-[13.5px] lg:text-[15px] mx-4 gap-7 mt-2.5 lg:mt-4 xl:mt-5 gap-y-1.5">
+                    <ul className="list-disc marker:text-[#DAA520] text-[#D8D8D8]/60 font-bold text-[12px] md:text-[10px] lg:text-[12px] mx-4 gap-7 mt-2.5 lg:mt-4 xl:mt-5 gap-y-1.5">
                         {service.escopo.map((name, index)=>(
                             <li key={index}><span className="line-clamp-1 xl:line-clamp-2">{name}</span></li>
                         ))}
                     </ul>
-                    <Link href={`/service/${service.id}`} className="flex gap-1 text-[#DAA520] text-[13.5px] md:text-[17px] lg:text-[20px] mt-2.5 ml-1 xl:ml-5 cursor-pointer transition hover:scale-[1.02] xl:hover:scale-[1.05] xl:w-[250px]">
+                    <Link href={`/service/${service.id}`} className="flex gap-1 text-[#DAA520] text-[13.5px] md:text-[10px] lg:text-[12px] mt-2.5 ml-1 xl:ml-5 cursor-pointer transition hover:scale-[1.02] xl:hover:scale-[1.05] xl:w-[250px]">
                         Ver detalhes completo
-                        <img src="/arrow.svg" alt="Arrow Icon" width={13.5} height={10} loading="eager" decoding="async" fetchPriority="low" className="mt-[2.5px]"/>
+                        <img src="/arrow.svg" alt="Arrow Icon" width={10} height={10} loading="eager" decoding="async" fetchPriority="low" className="mt-[2px]"/>
                     </Link>
                 </div>
             </div>

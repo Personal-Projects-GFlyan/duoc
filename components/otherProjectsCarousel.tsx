@@ -17,7 +17,7 @@ export default function OtherProjectsCarousel({projects}: {projects: ProjectCard
         <>
             <div className="lg:hidden flex flex-col justify-center items-center">
                 <h1 className="text-[#DAA520] text-[15px] lg:text-[37px] text-center">EXPLORE MAIS</h1>
-                <h2 className="text-[#D8D8D8] text-[23px] lg:text-[50px] text-center font-bold">Outros Serviços</h2>
+                <h2 className="text-[#D8D8D8] text-[23px] lg:text-[50px] text-center font-bold">Outros Projetos</h2>
                 <img src="/line.svg" alt="Line Icon" height={10} width={100} loading="eager" decoding="async" fetchPriority="low" className="mt-2"/>
                 <Mobile projects={projects}/>
                 <div className="flex justify-between mt-6 gap-5">

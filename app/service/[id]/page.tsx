@@ -22,7 +22,7 @@ export default async function ServicePage({params}: {params: Promise<{id: string
                                     </div>}>
                     <Service params={params}/>
                 </Suspense>
-            <section className="bg-[#06090B] w-full py-5 lg:pb-10 flex flex-col justify-center items-center px-7 lg:px-10">
+            <section className="bg-[#06090B] w-full pb-10 lg:py-14 flex flex-col justify-center items-center px-7 lg:px-10">
                 <h1 className="text-white text-[20px] md:text-[25px] lg:text-[33px] text-center font-bold">Interessado nesse serviço?</h1>
                 <p className="text-center text-[12px] md:text-[17px] lg:text-[22px] max-w-[280px] md:max-w-[400px] lg:max-w-[870px] text-[#D8D8D8] mt-5">Entre em contato para discutir seu projeto e receber um orçamento personalizado.</p>
                 <div className="flex justify-between mt-6 gap-5">

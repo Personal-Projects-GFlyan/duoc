@@ -22,7 +22,7 @@ export default function ProjectPage({params}: {params: Promise<{id: string}>}) {
                 <Project params={params} />
                 
             </Suspense>
-            <section className="bg-[#06090B] w-full py-10 flex flex-col justify-center items-center px-7 lg:p-10">
+            <section className="bg-[#06090B] w-full py-10 flex flex-col justify-center items-center px-7 lg:px-10 lg:py-14">
                 <h1 className="text-white text-[20px] c lg:text-[33px] text-center font-bold">Gostou deste projeto?</h1>
                 <p className="text-center text-[12px] md:text-[17px] lg:text-[22px] max-w-[280px] md:max-w-[400px] lg:max-w-[870px] text-[#D8D8D8] mt-5">Entre em contato para discutir como podemos criar algo especial para você.</p>
                 <div className="flex justify-between mt-6 gap-5">

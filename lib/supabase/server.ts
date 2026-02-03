@@ -157,7 +157,8 @@ type ProjectInfo = {
   localizacao: string,
   ano: number,
   duracao: string,
-  info_imagem: {alt: string, pos: number, url: string}[];
+  info_imagem: {alt: string, pos: number, url: string}[],
+  servico_nome: string[];
 }
 
 export async function getProjectInfo(id: number): Promise<ProjectInfo> {
