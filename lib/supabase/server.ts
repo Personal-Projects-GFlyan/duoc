@@ -220,3 +220,25 @@ export async function getServicesAndProjectsInProgress(): Promise<S_P_InProgress
     throw error;
   } 
 }
+
+export async function getAllProjects(): Promise<ProjectCard[]> {
+  try{
+    const supabase = await createClient();
+    const {data, error} = await supabase.from("v_allprojects").select("*");
+
+    return data as ProjectCard[];
+  } catch(error) {
+    throw error;
+  } 
+}
+
+export async function getServicesAndProjects(): Promise<S_P_InProgress[]> {
+  try{
+    const supabase = await createClient();
+    const {data, error} = await supabase.from("v_servicesandprojects").select("*");
+
+    return data as S_P_InProgress[];
+  } catch(error) {
+    throw error;
+  } 
+}

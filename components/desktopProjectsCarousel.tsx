@@ -72,7 +72,7 @@ export default function Carousel({projects}: {projects: ProjectCard[]}) {
                  <button className={active?"z-30 cursor-pointer":"hidden"}>
                     <img src="/leftButton.svg" alt="Left Button Icon" width={40} height={40} />
                 </button>
-                <div className="relative flex gap-10 justify-center items-center max-w-[980px] min-w-[980px]">
+                <div className="relative flex gap-5 xl:gap-10 justify-center items-center max-w-[790px] min-w-[790px] xl:max-w-[980px] xl:min-w-[980px]">
                     <div className={right?"absolute transition duration-250 left-0 z-10":left? "hidden":"hidden"}>
                         <DesktopProjectCard 
                             id={projects[leftHiddenPos].id}
@@ -84,7 +84,7 @@ export default function Carousel({projects}: {projects: ProjectCard[]}) {
                         />
                     </div>
 
-                    <div className={right?"absolute left-0 min-w-[300px] transition durantion-250 translate-x-[340px] z-20": left? "hidden": "min-w-[300px]"}>
+                    <div className={right?"absolute left-0 xl:min-w-[300px] transition durantion-250 xl:translate-x-[340px] z-20 min-w-[250px] translate-x-[270px]": left? "hidden": "xl:min-w-[300px] min-w-[250px]"}>
                         <DesktopProjectCard 
                             id={projects[firstPos].id}
                             title={projects[firstPos].nome} 
@@ -94,7 +94,7 @@ export default function Carousel({projects}: {projects: ProjectCard[]}) {
                             imageAlt={projects[firstPos].altimagem}
                         />
                     </div>
-                    <div className={right?"absolute left-0 translate-x-[680px] min-w-[300px] transition durantion-250 z-30":left?"absolute right-0 -translate-x-[680px] transition durantion-250 z-30":"min-w-[300px]"}>
+                    <div className={right?"absolute left-0 xl:translate-x-[680px]  translate-x-[540px] xl:min-w-[300px] transition durantion-250 z-30 min-w-[250px]":left?"absolute right-0 xl:-translate-x-[680px] transition durantion-250 z-30  -translate-x-[540px]":"xl:min-w-[300px] min-w-[250px]"}>
                         <DesktopProjectCard 
                             id={projects[secondPos].id}
                             title={projects[secondPos].nome} 
@@ -104,7 +104,7 @@ export default function Carousel({projects}: {projects: ProjectCard[]}) {
                             imageAlt={projects[secondPos].altimagem}
                         />
                     </div>
-                    <div className={right?"hidden":left?"absolute right-0 min-w-[300px] transition durantion-250 -translate-x-[340px] z-20":"min-w-[300px]"}>
+                    <div className={right?"hidden":left?"absolute right-0 xl:min-w-[300px] min-w-[250px] transition durantion-250 xl:-translate-x-[340px] -translate-x-[270px] z-20":"xl:min-w-[300px] min-w-[250px]"}>
                         <DesktopProjectCard 
                             id={projects[thirdPos].id}
                             title={projects[thirdPos].nome} 

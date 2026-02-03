@@ -17,40 +17,27 @@ export default function AboutPage() {
             </section>
 
             {/* HISTÓRIA */}
-            <section className="bg-[#07090A] w-full py-2.5 px-7 xl:px-32 2xl:px-64 xl:py-10">
+            <section className="bg-[#07090A] w-full py-2.5 px-7 xl:px-32 2xl:px-64 xl:py-10 xl:max-h-[700px]">
                 <h1 className="text-[#DAA520] text-[14px] lg:text-[22px] lg:text-start">NOSSA HISTÓRIA</h1>
                 <div className="xl:flex xl:justify-between">
                     <div className="xl:max-w-[527.5px]">
                         <h2 className="text-white text-[20px] xl:text-[48px] font-bold">Do Lar Para o Mundo</h2>
                         <img src="/line.svg" alt="Line Icon" height={10} width={90} loading="eager" decoding="async" fetchPriority="low" className="xl:hidden"/>
                         <img src="/line.svg" alt="Line Icon" height={10} width={220} loading="eager" decoding="async" fetchPriority="low" className="hidden xl:block"/>
-                        <p className="xl:hidden text-[#D8D8D8] text-[12px] md:text-[18px] text-justify mt-5">
-                            A DUOC Arquitetura e Engenharia é uma empresa especializada no desenvolvimento de soluções integradas em arquitetura, engenharia, construção civil, instalações elétricas e automação residencial e empresarial. Atuamos de forma estratégica e colaborativa, acompanhando nossos clientes em todas as etapas do projeto, desde a concepção até a execução final, sempre com foco em qualidade técnica, eficiência e confiança.
+                        <p className="text-[#D8D8D8] text-[12px] md:text-[18px] xl:text-[15px] text-justify mt-5">
+                            A DUOC Arquitetura e Engenharia atua no desenvolvimento de soluções integradas em arquitetura, engenharia e construção civil, acompanhando cada projeto da concepção à execução final. A empresa alia qualidade técnica, eficiência e confiança, oferecendo soluções inteligentes e sustentáveis, sempre alinhadas às normas, prazos e necessidades dos clientes.
                             <br /><br />
-                            Nosso propósito é transformar espaços por meio de soluções inteligentes, sustentáveis e humanas, alinhando as necessidades de cada cliente às melhores práticas do mercado, dentro dos prazos, custos e normas técnicas estabelecidos. A DUOC acredita que cada projeto deve unir funcionalidade, estética e desempenho, resultando em ambientes que acolhem, funcionam e inspiram.                        
-                            <br /><br />
-                            A essência da DUOC está no cuidado com cada detalhe. Trabalhamos com uma abordagem consciente, que valoriza a sustentabilidade, a eficiência energética, a análise criteriosa de custo-benefício e a redução de desperdícios, tanto em novas obras quanto em reformas. Essa visão reflete nosso compromisso com o futuro, com as pessoas e com o ambiente construído.
-                            <br /><br />
-                            Nossa equipe é formada por profissionais qualificados nas áreas de arquitetura e engenharia, com experiência em projetos residenciais, comerciais e institucionais no Distrito Federal. A atuação integrada entre as disciplinas permite à DUOC entregar soluções completas, personalizadas e tecnicamente sólidas, sempre pautadas pela ética, inovação e comprometimento.
-                        </p>
-                        <p className="hidden xl:block text-[#D8D8D8] text-[15px] text-justify mt-5">
-                            A DUOC Arquitetura e Engenharia é uma empresa especializada no desenvolvimento de soluções integradas em arquitetura, engenharia, construção civil, instalações elétricas e automação residencial e empresarial. Atuamos de forma estratégica e colaborativa, acompanhando nossos clientes em todas as etapas do projeto, desde a concepção até a execução final, sempre com foco em qualidade técnica, eficiência e confiança.
-                            <br /><br />
-                            Nosso propósito é transformar espaços por meio de soluções inteligentes, sustentáveis e humanas, alinhando as necessidades de cada cliente às melhores práticas do mercado, dentro dos prazos, custos e normas técnicas estabelecidos. A DUOC acredita que cada projeto deve unir funcionalidade, estética e desempenho, resultando em ambientes que acolhem, funcionam e inspiram.                        
-                            <br /><br />
-                            A essência da DUOC está no cuidado com cada detalhe. Trabalhamos com uma abordagem consciente, que valoriza a sustentabilidade, a eficiência energética, a análise criteriosa de custo-benefício e a redução de desperdícios, tanto em novas obras quanto em reformas. Essa visão reflete nosso compromisso com o futuro, com as pessoas e com o ambiente construído.
-                            <br /><br />
-                            Nossa equipe é formada por profissionais qualificados nas áreas de arquitetura e engenharia, com experiência em projetos residenciais, comerciais e institucionais no Distrito Federal. A atuação integrada entre as disciplinas permite à DUOC entregar soluções completas, personalizadas e tecnicamente sólidas, sempre pautadas pela ética, inovação e comprometimento.
+                            Com uma abordagem cuidadosa e integrada, a DUOC valoriza funcionalidade, estética e desempenho, entregando projetos personalizados e tecnicamente sólidos. Sua equipe qualificada atua em empreendimentos residenciais, comerciais e institucionais, pautada pela ética, inovação e compromisso com o ambiente construído.
                         </p>
                     </div>
-                    <div className="flex flex-col justify-center items-center min-h-[250px] mt-5 md:mt-20 xl:mt-[200px]">
+                    <div className="flex flex-col justify-center items-center min-h-[250px] mt-5 md:mt-20">
                         <Image src="/office.webp" alt="Office Image" width={220} height={220} priority fetchPriority="high" className="z-10 md:hidden" />
                         <Image src="/office.webp" alt="Office Image" width={420} height={420} priority fetchPriority="high" className="z-10 hidden md:block mr-10" />
                         <img src="/square.svg" alt="Square Icon" width={86} height={86} className="relative left-[85px] bottom-[70px] z-0 md:hidden"/>
                         <img src="/square.svg" alt="Square Icon" width={160} height={160} className="relative left-[145px] bottom-[125px] z-0 hidden md:block"/>
                     </div>
                 </div>
-                <div className="flex gap-5 xl:gap-[30px] justify-center items-center relative bottom-[40px] xl:justify-start xl:static xl:max-w-[527.5px]">
+                <div className="flex gap-5 xl:gap-[30px] justify-center items-center relative bottom-[40px] xl:justify-start xl:bottom-[250px] xl:max-w-[527.5px]">
                     <HistoryCard title="MISSÃO" text="Transformar espaços com soluções inteligentes, sustentáveis e humanas."/>
                     <HistoryCard title="VISÃO" text="Ser referência em arquitetura, engenharia e automação em Brasília. "/>
                 </div>

@@ -36,7 +36,6 @@ export default function OtherProjectsCarousel({projects}: {projects: ProjectCard
                             key={index}
                             id={project.id}
                             title={project.nome} 
-                            // category={ListComponents[righttHiddenPos].category}
                             localization={project.localizacao}
                             imageSrc={project.urlimagem}
                             imageAlt={project.altimagem}

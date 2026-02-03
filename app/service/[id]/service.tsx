@@ -2,7 +2,7 @@ import { OtherServiceCard } from "@/components/servicesCard";
 import { getOtherServices_LimitedBy2, getServiceInfosById, getProjectsByServiceId_LimitedBy2 } from "@/lib/supabase/server"
 import { notFound } from "next/navigation";
 import MobileProjectCard from "@/components/mobileProjectCard";
-import DesktopProjectCard from "@/components/desktopProjectCard";
+import DesktopProjectCard from "@/components/desktopProjectCardForServicePage";
 import Link from "next/link";
 
 type Service = {
@@ -88,7 +88,7 @@ export default async function Service({params}: {params: Promise<{id: string}>})
                             <MobileProjectCard key={index} id={project.id} title={project.nome} localization={project.localizacao} imageSrc={project.urlimagem} imageAlt={project.altimagem}/>
                         ))}
                     </div>
-                    <div className="hidden lg:grid mt-10 grid-cols-2 gap-10 w-full max-w-[1456px]">
+                    <div className="hidden lg:flex justify-center items-center mt-10 gap-10 w-full max-w-[1456px]">
                         {projects.map((project, index) => (
                             <DesktopProjectCard key={index} id={project.id} title={project.nome} localization={project.localizacao} imageSrc={project.urlimagem} imageAlt={project.altimagem}/>
                         ))}

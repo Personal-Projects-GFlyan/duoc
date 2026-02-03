@@ -85,67 +85,37 @@ export default function Carousel({projects}: {projects: ProjectCard[]}) {
                  <button className={active?"z-30 cursor-pointer":"hidden"}>
                     <img src="/leftButton.svg" alt="Left Button Icon" width={40} height={40} />
                 </button>
-                <div className="relative flex gap-10 justify-center items-center max-w-[980px] min-w-[980px]">
+                <div className="relative flex gap-5 justify-center items-center max-w-[790px] min-w-[790px] xl:max-w-[980px] xl:min-w-[980px]">
                     {(group[activeGroup].length === 3)?
                     <>
-                        {/* <div className={right?"absolute transition duration-250 left-0 z-10":left? "hidden":"hidden"}>
-                            <DesktopProjectCard 
-                                id={projects[leftHiddenPos].id}
-                                title={projects[leftHiddenPos].nome} 
-                                // category={ListComponents[leftHiddenPos].category}
-                                localization={projects[leftHiddenPos].localizacao}
-                                imageSrc={projects[leftHiddenPos].urlimagem}
-                                imageAlt={projects[leftHiddenPos].altimagem}
-                            />
-                        </div> */}
-
-                        <div className={"min-w-[300px]"}>
                             <DesktopProjectCard 
                                 id={projects[firstPos].id}
                                 title={projects[firstPos].nome} 
-                                // category={ListComponents[firstPos].category}
                                 localization={projects[firstPos].localizacao}
                                 imageSrc={projects[firstPos].urlimagem}
                                 imageAlt={projects[firstPos].altimagem}
                             />
-                        </div>
-                        <div className={"min-w-[300px]"}>
                             <DesktopProjectCard 
                                 id={projects[secondPos].id}
                                 title={projects[secondPos].nome} 
-                                // category={ListComponents[secondPos].category}
                                 localization={projects[secondPos].localizacao}
                                 imageSrc={projects[secondPos].urlimagem}
                                 imageAlt={projects[secondPos].altimagem}
                             />
-                        </div>
-                        <div className={"min-w-[300px]"}>
+
                             <DesktopProjectCard 
                                 id={projects[thirdPos].id}
                                 title={projects[thirdPos].nome} 
-                                // category={ListComponents[thirdPos].category}
                                 localization={projects[thirdPos].localizacao}
                                 imageSrc={projects[thirdPos].urlimagem}
                                 imageAlt={projects[thirdPos].altimagem}
                             />
-                        </div>   
-                        {/* <div className={right?"hidden":left?"absolute transition duration-250 right-0 z-10":"hidden"}>
-                            <DesktopProjectCard 
-                                id={projects[righttHiddenPos].id}
-                                title={projects[righttHiddenPos].nome} 
-                                // category={ListComponents[righttHiddenPos].category}
-                                localization={projects[righttHiddenPos].localizacao}
-                                imageSrc={projects[righttHiddenPos].urlimagem}
-                                imageAlt={projects[righttHiddenPos].altimagem}
-                            />
-                        </div>  */}
                     </>: 
                     (group[activeGroup].length === 2)?
                     <>
                             <DesktopProjectCard 
                                 id={projects[firstPos].id}
                                 title={projects[firstPos].nome} 
-                                // category={ListComponents[righttHiddenPos].category}
                                 localization={projects[firstPos].localizacao}
                                 imageSrc={projects[firstPos].urlimagem}
                                 imageAlt={projects[firstPos].altimagem}
@@ -153,7 +123,6 @@ export default function Carousel({projects}: {projects: ProjectCard[]}) {
                             <DesktopProjectCard 
                                 id={projects[secondPos].id}
                                 title={projects[secondPos].nome} 
-                                // category={ListComponents[righttHiddenPos].category}
                                 localization={projects[secondPos].localizacao}
                                 imageSrc={projects[secondPos].urlimagem}
                                 imageAlt={projects[secondPos].altimagem}
@@ -163,7 +132,6 @@ export default function Carousel({projects}: {projects: ProjectCard[]}) {
                             <DesktopProjectCard 
                                 id={projects[righttHiddenPos].id}
                                 title={projects[righttHiddenPos].nome} 
-                                // category={ListComponents[righttHiddenPos].category}
                                 localization={projects[righttHiddenPos].localizacao}
                                 imageSrc={projects[righttHiddenPos].urlimagem}
                                 imageAlt={projects[righttHiddenPos].altimagem}
